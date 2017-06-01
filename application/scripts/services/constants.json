@@ -1,0 +1,11 @@
+{
+  "DEALLOCATION_CONFIRMATION": "You have chosen to de-allocate the selected assessments from the health professional. Do you wish to proceed?",
+  "DOWNLOADED_CONFIRMATION": "At least one assessment you have chosen to deallocate has a status of Downloaded. Are you sure you want to deallocate this assessment?",
+  "TECHNICAL_ERROR_MSG": "Operation has failed due an IT problem, please try again or contact your help desk.",
+  "PRIVILEGES_ERROR_MSG": "You do not have sufficient privileges to view the assessment(s) allocated to this health professional.",
+  "SEARCH_INPUT_FORMAT_MSG": "Incorrect format. Health Professional's unique ID's are numerical and require eight digits. Please try again.",
+  "SEARCH_CLAIMANT_INPUT_FORMAT_MSG": "Entry is in an invalid format. Please check and try again.",
+  "NO_ASSESSMENTS_FOUND" : "No assessment has been found that matches your search.",
+  "ALREADY_DE_ALLOCATED" : "You cannot de-allocate this assessment as it has already been de-allocated. It will now be removed from this table.",
+  "FAULT_CODE_9001" : "9001"
+}

@@ -1,0 +1,2995 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="bc23ffb8-eebb-4f7b-a418-138b0bc5fc22" activeEnvironment="Default" name="MapsMock" resourceRoot="${projectDir}" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="03f3406d-5992-484c-8a56-d800f5a2eda6" wsaVersion="NONE" name="MAPSAllocateDeallocateUserBinding" type="wsdl" bindingName="{http://uk.gov.dwp.maps}MAPSAllocateDeallocateUserBinding" soapVersion="1_2" anonymous="optional" definition="file:/Users/shibumanoharan/Desktop/services/wsdl/allocate_assessment.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/Users/shibumanoharan/Desktop/services/wsdl/allocate_assessment.wsdl"><con:part><con:url>file:/Users/shibumanoharan/Desktop/services/wsdl/allocate_assessment.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://uk.gov.dwp.maps" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://uk.gov.dwp.maps" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:maps="http://uk.gov.dwp.maps">
+  <wsdl:documentation>Name: Allocate WSDL
+			 Author: Vikas Omar
+			 
+		     SOAP Version: 1.2
+		     Schema Versions Added for WSDL v 0.1: 
+		     v1.4.1			MAPSBaseDataTypes.xsd
+		     v1.4			MAPSOpsHeader.xsd
+		     v1.4			MAPSResponseFault.xsd
+		 			 
+			Version History
+			v0.2	changes to correct schema types									09-07-2015					vikas
+		 	v0.3	Initial version (based on v1.3 XSDs)			build 0.0.8.0	16/07/2015
+		 	v0.4	New version (based on v1.4 XSDs SOAP 1.2)		build 0.0.8.0	26/07/2015	
+		 	v0.5	changes to namespace and message order			build 0.0.11.0	30/07/2015
+		 	v0.6	change the operation name to MAPSAllo			build 0.0.12.0	06/08/2015
+		 	v0.7	Added DeAllocate Definition						build 0.0.17.0	01/09/2015
+		 	v0.8	With Implementation of Exception Handling, structure of WSDL is changed build 0.0.19.0	24/09/2015		Deep Ranjan</wsdl:documentation>
+  <!--Type definitions for input- and output parameters for webservice-->
+  <wsdl:types>
+    <xs:schema targetNamespace="http://uk.gov.dwp.maps">
+      <xs:include schemaLocation="../schema/MAPSAllocationOpsBody.xsd"/>
+      <xs:include schemaLocation="../schema/MAPSOpsHeader.xsd"/>
+      <xs:include schemaLocation="../schema/MAPSResponseFault.xsd"/>
+      <!--Allocate Elements-->
+      <xs:element name="MAPSAllocateUserRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="maps:MAPSOpsRequestHeader"/>
+            <xs:element ref="maps:MAPSAllocateUserRequestBody"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="MAPSAllocateUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="maps:MAPSOpsResponseHeader"/>
+            <xs:element ref="maps:MAPSResponseFault" minOccurs="0" maxOccurs="1"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--DeAllocate Elements-->
+      <xs:element name="MAPSDeallocateUserRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="maps:MAPSOpsRequestHeader"/>
+            <xs:element ref="maps:MAPSDeallocateUserRequestBody"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="MAPSDeallocateUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="maps:MAPSOpsResponseHeader"/>
+            <xs:element ref="maps:MAPSResponseFault" minOccurs="0" maxOccurs="1"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <!--Message definitions for input and output-->
+  <wsdl:message name="MAPSAllocateUserRequest">
+    <wsdl:part name="allocate_in" element="maps:MAPSAllocateUserRequest"/>
+  </wsdl:message>
+  <wsdl:message name="MAPSAllocateUserResponse">
+    <wsdl:part name="allocate_out" element="maps:MAPSAllocateUserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="MAPSDeallocateUserRequest">
+    <wsdl:part name="deallocate_in" element="maps:MAPSDeallocateUserRequest"/>
+  </wsdl:message>
+  <wsdl:message name="MAPSDeallocateUserResponse">
+    <wsdl:part name="deallocate_out" element="maps:MAPSDeallocateUserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="MAPSResponseFault">
+    <wsdl:part name="fault" element="maps:MAPSResponseFault"/>
+  </wsdl:message>
+  <!--Port (interface) definitions for Allocate && Deallocate-->
+  <wsdl:portType name="MAPSAllocateDeallocateUserEndpoint">
+    <wsdl:operation name="MAPSAllocate">
+      <wsdl:input name="MAPSAllocateUserRequest" message="tns:MAPSAllocateUserRequest"/>
+      <wsdl:output name="MAPSAllocateUserResponse" message="tns:MAPSAllocateUserResponse"/>
+      <wsdl:fault name="MAPSResponseFault" message="tns:MAPSResponseFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="MAPSDeallocate">
+      <wsdl:input name="MAPSDeallocateUserRequest" message="tns:MAPSDeallocateUserRequest"/>
+      <wsdl:output name="MAPSDeallocateUserResponse" message="tns:MAPSDeallocateUserResponse"/>
+      <wsdl:fault name="MAPSResponseFault" message="tns:MAPSResponseFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <!--Allocate:Port bindings to transports and encoding - HTTP, document literal encoding 
+		is used-->
+  <wsdl:binding name="MAPSAllocateDeallocateUserBinding" type="tns:MAPSAllocateDeallocateUserEndpoint">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="MAPSAllocate">
+      <soap12:operation soapAction="http://uk.gov.dwp.maps" soapActionRequired="true" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="allocate_in" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="allocate_out" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MAPSResponseFault">
+        <soap:fault name="MAPSResponseFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MAPSDeallocate">
+      <soap12:operation soapAction="http://uk.gov.dwp.maps" soapActionRequired="true" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="deallocate_in" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="deallocate_out" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MAPSResponseFault">
+        <soap:fault name="MAPSResponseFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <!--Service definition for Allocate-->
+  <wsdl:service name="MAPSAllocateDeallocateUserEndpointService">
+    <wsdl:port name="MAPSAllocateDeallocateUserService" binding="tns:MAPSAllocateDeallocateUserBinding">
+      <soap12:address location="http://localhost:8181/cxf/allocate/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:/Users/shibumanoharan/Desktop/services/schema/MAPSAllocationOpsBody.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://uk.gov.dwp.maps" version="1.4" id="MAPSAllocationOpsBody.xsd" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:maps="http://uk.gov.dwp.maps">
+  <!--Schema Description-->
+  <xs:annotation>
+    <xs:documentation xml:lang="en">Name: MAPSAllocationOpsBody.xsd
+			 Author: Terry Hughes
+			 Purpose: Definitions for MAPS Allocation Operations Request and Response Body Data Structures
+
+			 Version History
+			 v0.1	Allocate, Deallocate Request and Responses Created					Terry Hughes	13/01/2015
+			 v0.2	Remove Body from Allocate and Deallocate Response					Terry Hughes	16/03/2015
+			 v0.2	Use APLotId for Allocate and Deallocate Request						Terry Hughes	16/03/2015
+			 v0.2	Remove UserId from Allocate and Deallocate Request,
+			 use UserId in Ops Header													Terry Hughes	16/03/2015
+			 v1.0	Promoted to Baseline												Terry Hughes	24/03/2015
+			 v1.1	Promoted to V1.1													Terry Hughes	16/04/2015
+			 v1.2	Promoted to v1.2													Terry Hughes	24/04/2015
+			 v1.2	Added targetNamespace(http://uk.gov.dwp.maps)ans xmlns prefix		Terry Hughes	05/05/2015
+			 v1.3	Added UserToBeAllocated to the Allocate Request						Terry Hughes	22/05/2015
+			 v1.4	Promoted to v1.4													Terry Hughes	24/07/2015</xs:documentation>
+  </xs:annotation>
+  <!--Include Files-->
+  <!--Include Files-->
+  <!--Include Files-->
+  <xs:include schemaLocation="MAPSBaseDataTypes.xsd"/>
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <!--Allocate User Request-->
+  <xs:complexType name="MAPSAllocateUserRequestBodyType">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="UserToBeAllocated" type="maps:MAPSUserIdType"/>
+      <xs:element name="Benefit" type="maps:MAPSBenefitType"/>
+      <xs:element name="AssessmentId" type="maps:MAPSAssessmentIdType"/>
+      <xs:element name="AssessmentProviderLotId" type="maps:APLotIdType"/>
+      <xs:element name="AppointmentDateTime" type="maps:DateTimeType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Allocate User Response-->
+  <!--No Body Required-->
+  <!--Deallocate User Request-->
+  <xs:complexType name="MAPSDeallocateUserRequestBodyType">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="AssessmentId" type="maps:MAPSAssessmentIdType"/>
+      <xs:element name="AssessmentProviderLotId" type="maps:APLotIdType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Deallocate User Response-->
+  <!--No Body Required-->
+  <!--Data Structures-->
+  <!--Data Structures-->
+  <!--Data Structures-->
+  <!--Allocate-->
+  <xs:element name="MAPSAllocateUserRequestBody" type="maps:MAPSAllocateUserRequestBodyType"/>
+  <!--Deallocate-->
+  <xs:element name="MAPSDeallocateUserRequestBody" type="maps:MAPSDeallocateUserRequestBodyType"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/Users/shibumanoharan/Desktop/services/schema/MAPSBaseDataTypes.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://uk.gov.dwp.maps" version="1.4.1" id="MAPSBaseDataTypes.xsd" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:maps="http://uk.gov.dwp.maps">
+  <!--Schema Description-->
+  <xs:annotation>
+    <xs:documentation xml:lang="en">Name: MAPSBaseDataTypes.xsd
+			 Purpose: MAPS Common Base Data Types
+
+			 Version History
+			 v0.1	MAPS Base Data Types Created										Terry Hughes		13/01/2015
+			 v0.2	Re-defined BenefitType as MAPSBenefitType							Terry Hughes		03/02/2015
+			 v0.2	Added ConsultationLocationType										Terry Hughes		03/02/2015
+			 v0.3	Added Hours, Minutes types											Terry Hughes		13/02/2015
+			 v0.3	Changed AS and AP EventId type to integer							Terry Hughes		16/02/2015
+			 v0.3	Added AssessmentEditionType type									Terry Hughes		16/02/2015
+			 v0.3	Amended MAPS Operation names										Terry Hughes		16/02/2015
+			 v1.0	Promoted to Baseline												Terry Hughes		24/03/2015
+			 v1.0	Corrected NINO pattern												Terry Hughes		25/03/2015
+			 v1.1	Corrected MAPSAssessmentEditionType tag								Terry Hughes		14/04/2015
+			 v1.1	Removed excess Phrase data MAPS Operations							Terry Hughes		15/04/2015
+			 v1.1	Added IPAddressType													Terry Hughes		16/04/2015
+			 v1.1	Added HostNameType													Terry Hughes		16/04/2015
+			 v1.2	Promoted to v1.2													Terry Hughes		24/04/2015
+			 v1.2	Extended AP Event Id Range											Terry Hughes		24/04/2015
+			 v1.2	Added ReleaseAssessmentOutcomeType									Terry Hughes		28/04/2015
+			 v1.2	Added targetNamespace(http://uk.gov.dwp.maps)and xmlns prefix		Terry Hughes		05/05/2015
+			 v1.3	Promoted to v1.3													Terry Hughes		22/05/2015
+			 v1.3	Changed MAPSResponseStatusType. Removed maxInclusive restriction	Terry Hughes		02/06/2015
+			 v1.4	Changed MAPSBenefitType so that all benefits are 3 characters.		Terry Hughes		23/06/2015
+			 v1.4	Changed AddressType to MinLength = 1								Terry Hughes		08/07/2015
+			 v1.4	Changed AlternateLocalAssessmentIdType to MinLength = 1				Terry Hughes		08/07/2015
+			 v1.4	Changed FirstNameLastNameType to MinLength = 1						Terry Hughes		08/07/2015
+			 v1.4	Changed FirstNameType to MinLength = 1								Terry Hughes		08/07/2015
+			 v1.4	Changed LastNameType to MinLength = 1								Terry Hughes		08/07/2015
+			 v1.4	Changed LocalAssessmentIdType to MinLength = 1						Terry Hughes		08/07/2015
+			 v1.4	Changed MAPSAssessmentIdType to MinLength = 1						Terry Hughes		08/07/2015
+			 v1.4	Changed MAPSRequestIdType to MinLength = 1							Terry Hughes		08/07/2015
+			 v1.4	Changed MAPSUSerIdType to MinLength = 1								Terry Hughes		08/07/2015
+			 v1.4	Changed MiddleNameType to MinLength = 1								Terry Hughes		08/07/2015
+			 v1.4	Changed QCRejectReasonType to MinLength = 1							Terry Hughes		08/07/2015
+			 v1.4	Added [A-Z][a-z][0-9] pattern to AlternateLocalAssessmentIdType 	Terry Hughes		10/07/2015
+			 v1.4	Added [A-Z][a-z][0-9] pattern to LocalAssessmentIdType 				Terry Hughes		10/07/2015
+			 v1.4	Added [A-Z][a-z][0-9] pattern to MAPSAssessmentIdType 				Terry Hughes		10/07/2015
+			 v1.4	Added [A-Z][a-z][0-9] pattern to CRNType 							Terry Hughes		10/07/2015
+			 v1.4.1	Changed AlternateLocalAssessmentIdType pattern to [A-Za-z0-9]{1,100}	Terry Hughes		10/07/2015
+			 v1.4.1	Changed LocalAssessmentIdType pattern to [A-Za-z0-9]{1,100} 			Terry Hughes		10/07/2015
+			 v1.4.1	Changed MAPSAssessmentIdType pattern to [A-Za-z0-9]{1,100} 				Terry Hughes		10/07/2015
+			 v1.4.1	Changed CRNType pattern to [A-Za-z0-9]{1,18} 							Terry Hughes		10/07/2015</xs:documentation>
+  </xs:annotation>
+  <!--Include Files-->
+  <!--Include Files-->
+  <!--Include Files-->
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <xs:simpleType name="AddressType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlternateLocalAssessmentIdType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9]{1,100}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ASEventIdType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="999"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="APEventIdType">
+    <xs:restriction base="xs:integer">
+      <xs:annotation>
+        <xs:documentation xml:lang="en-gb">AP Event Range 1001-1999 == AP Events,
+					 AP Event Range 2000-2999 == AP Exception Events,
+					 AP Event Range 3000-3999 == Future Expansion,
+					 AP Event Range 4000-4999 == Future Expansion</xs:documentation>
+      </xs:annotation>
+      <xs:minInclusive value="1001"/>
+      <xs:maxInclusive value="4999"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="APLotIdType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="APIdType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CAPITA"/>
+      <xs:enumeration value="ATOSHEALTHCARE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AssessmentTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PBR"/>
+      <xs:enumeration value="F2F"/>
+      <xs:enumeration value="TI"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="BoolType">
+    <xs:restriction base="xs:boolean"/>
+  </xs:simpleType>
+  <xs:simpleType name="ConsultationLocationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Home"/>
+      <xs:enumeration value="Clinic"/>
+      <xs:enumeration value="Any"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CountMonthsType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="11"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CountType">
+    <xs:restriction base="xs:nonNegativeInteger"/>
+  </xs:simpleType>
+  <xs:simpleType name="CountYearsType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="99"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CRNType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9]{1,18}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DateType">
+    <xs:restriction base="xs:date"/>
+  </xs:simpleType>
+  <xs:simpleType name="DateTimeType">
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+  <xs:simpleType name="FirstNameLastNameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FirstNameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="GenderType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SX1"/>
+      <xs:enumeration value="SX2"/>
+      <xs:enumeration value="SX45000"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="HostNameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="HoursType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="HR1[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="IntegerType">
+    <xs:restriction base="xs:nonNegativeInteger"/>
+  </xs:simpleType>
+  <xs:simpleType name="IPAddressType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LanguageType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="LN[0-9]{1,2}"/>
+      <xs:pattern value="LN45000"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LastNameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LocalAssessmentIdType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9]{1,100}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MakeAvailableRequestTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MakeAvailable"/>
+      <xs:enumeration value="CancelAvailability"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSAssessmentEditionType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en-gb">Integer Value 1 == New
+				 Integer Value 3 == Rework</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:integer">
+      <!--1 == New-->
+      <!--3 == Rework-->
+      <xs:pattern value="1"/>
+      <xs:pattern value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSAssessmentIdType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9]{1,100}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSBenefitType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en-gb">PIP == Personal Independence Payment
+				 ESA == Employment Support Allowance
+				 UCR == Universal Credit</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PIP"/>
+      <xs:enumeration value="ESA"/>
+      <xs:enumeration value="UCR"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSOperationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Allocate"/>
+      <xs:enumeration value="Deallocate"/>
+      <xs:enumeration value="GetSyncList"/>
+      <xs:enumeration value="Download"/>
+      <xs:enumeration value="Refresh"/>
+      <xs:enumeration value="Submit"/>
+      <xs:enumeration value="Return"/>
+      <xs:enumeration value="AutoSave"/>
+      <xs:enumeration value="GetDocumentSummary"/>
+      <xs:enumeration value="GetDocument"/>
+      <xs:enumeration value="GetReferenceData"/>
+      <xs:enumeration value="GetPhraseData"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSRequestIdType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="512"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSResponseStatusType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSStateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotAvailableForOffline"/>
+      <xs:enumeration value="AvailableForOffline"/>
+      <xs:enumeration value="Allocated"/>
+      <xs:enumeration value="Downloaded"/>
+      <xs:enumeration value="Submitted"/>
+      <xs:enumeration value="Returned"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSUserIdType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="64"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MiddleNameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MinutesType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="MIN1[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NINOType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{2}[0-9]{6}[A-D]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PositiveIntegerType">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="QCRejectReasonType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ReleaseAssessmentOutcomeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RAFToDWP"/>
+      <xs:enumeration value="SubmitToDWP"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TelephoneType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="11"/>
+      <xs:maxLength value="15"/>
+      <xs:pattern value="[0-9]{15}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TimeType">
+    <xs:restriction base="xs:time"/>
+  </xs:simpleType>
+  <xs:simpleType name="YesNoNotApplicableCodeType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="PIPYA45[0-9]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <!--Data Structures-->
+  <!--Data Structures-->
+  <!--Data Structures-->
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/Users/shibumanoharan/Desktop/services/schema/MAPSOpsHeader.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://uk.gov.dwp.maps" version="1.4" id="MAPSOpsHeader.xsd" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:maps="http://uk.gov.dwp.maps">
+  <!--Schema Description-->
+  <xs:annotation>
+    <xs:documentation xml:lang="en">Name: MAPSOpsHeader.xsd
+			 Author: Terry Hughes
+			 Purpose: Common Request and Response Header definitions for MAPS Operations
+
+			 Version History
+			 v0.1	MAPS Base Data Types Created											Terry Hughes		13/01/2015
+			 v0.2	Moved BenefitType into Ops Header from 									Terry Hughes		03/02/2015
+			 v0.3	Removed Security Token from Ops Header									Terry Hughes		16/03/2015
+			 v1.0	Promoted to Baseline													Terry Hughes		24/03/2015
+			 v1.1	Added IPAddress to MAPSOpsRequestHeaderType								Terry Hughes		16/04/2015
+			 v1.1	Added HostName to MAPSOpsRequestHeaderType								Terry Hughes		16/04/2015
+			 v1.1	Added RequestDateTime to MAPSOpsRequestHeaderType						Terry Hughes		16/04/2015
+			 v1.2	Promoted to v1.2														Terry Hughes		24/04/2015
+			 v1.2	Added targetNamespace(http://uk.gov.dwp.maps) and xmlns prefix			Terry Hughes		05/05/2015
+			 v1.3	Promoted to v1.3														Terry Hughes		22/05/2015
+			 v1.4	Promoted to v1.4														Terry Hughes		24/07/2015</xs:documentation>
+  </xs:annotation>
+  <!--Include Files-->
+  <!--Include Files-->
+  <!--Include Files-->
+  <xs:include schemaLocation="MAPSBaseDataTypes.xsd"/>
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <xs:complexType name="MAPSOpsRequestHeaderType">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="ClientRequestId" type="maps:MAPSRequestIdType"/>
+      <xs:element name="UserId" type="maps:MAPSUserIdType"/>
+      <xs:element name="Benefit" type="maps:MAPSBenefitType"/>
+      <xs:element name="Operation" type="maps:MAPSOperationType"/>
+      <xs:element name="IPAddress" type="maps:IPAddressType"/>
+      <xs:element name="HostName" type="maps:HostNameType"/>
+      <xs:element name="RequestDateTime" type="maps:DateTimeType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MAPSOpsResponseHeaderType">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="RequestHeader" type="maps:MAPSOpsRequestHeaderType"/>
+      <xs:element name="ResponseStatus" type="maps:MAPSResponseStatusType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Data Structures-->
+  <!--Data Structures-->
+  <!--Data Structures-->
+  <xs:element name="MAPSOpsRequestHeader" type="maps:MAPSOpsRequestHeaderType"/>
+  <xs:element name="MAPSOpsResponseHeader" type="maps:MAPSOpsResponseHeaderType"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/Users/shibumanoharan/Desktop/services/schema/MAPSResponseFault.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://uk.gov.dwp.maps" version="1.4" id="MAPSResponseFault.xsd" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:maps="http://uk.gov.dwp.maps">
+  <!--Schema Description-->
+  <xs:annotation>
+    <xs:documentation xml:lang="en">Name: MAPSResponseFault.xsd
+			 Author: Terry Hughes
+			 Purpose: Common Response Fault definitions for MAPS Operations
+			 (Could also be used for MAPS Event Service if required)
+
+			 Version History
+			 v0.1	MAPS Fault Data Types Created										Terry Hughes		15/01/2015
+			 v1.0	Promoted to Baseline												Terry Hughes		24/03/2015
+			 v1.1	Promoted to V1.1													Terry Hughes		16/04/2015
+			 v1.2	Promoted to v1.2													Terry Hughes		24/04/2015
+			 v1.2	Added targetNamespace(http://uk.gov.dwp.maps)and xmls prefix		Terry Hughes		05/05/2015
+			 v1.3	Promoted to v1.3													Terry Hughes		22/05/2015
+			 v1.3	Changed FaultCode to string											Terry Hughes		01/06/2015
+			 v1.4	Specified MinLength = 1 for MAPSFaultCodeType						Terry Hughes		08/07/2015
+			 v1.4	Specified MinLength = 1 for MAPSFaultStringType						Terry Hughes		08/07/2015
+			 v1.4	Specified MinLength = 1 for MAPSFaultActorType						Terry Hughes		08/07/2015
+			 v1.4	Specified MinLength = 1 for MAPSFaultDetailType						Terry Hughes		08/07/2015</xs:documentation>
+  </xs:annotation>
+  <!--Include Files-->
+  <!--Include Files-->
+  <!--Include Files-->
+  <xs:include schemaLocation="MAPSBaseDataTypes.xsd"/>
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <xs:simpleType name="MAPSFaultCodeType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSFaultStringType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSFaultActorType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSFaultDetailType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="1000"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <xs:complexType name="MAPSResponseFaultItemType">
+    <xs:sequence>
+      <xs:element name="FaultCode" minOccurs="1" maxOccurs="1" type="maps:MAPSFaultCodeType"/>
+      <xs:element name="FaultString" minOccurs="1" maxOccurs="1" type="maps:MAPSFaultStringType"/>
+      <xs:element name="FaultActor" minOccurs="1" maxOccurs="1" type="maps:MAPSFaultActorType"/>
+      <xs:element name="FaultDetail" minOccurs="0" maxOccurs="1" type="maps:MAPSFaultDetailType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MAPSResponseFaultType">
+    <xs:sequence>
+      <xs:element name="FaultItem" minOccurs="0" maxOccurs="unbounded" type="maps:MAPSResponseFaultItemType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Data Structures-->
+  <!--Data Structures-->
+  <!--Data Structures-->
+  <xs:element name="MAPSResponseFault" type="maps:MAPSResponseFaultType"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8088/mockMAPSAllocateDeallocateUserBinding</con:endpoint><con:endpoint>http://localhost:8181/cxf/allocate/</con:endpoint></con:endpoints><con:operation id="55a21095-707c-4008-8ad0-c6ffff0b465d" isOneWay="false" action="http://uk.gov.dwp.maps" name="MAPSAllocate" bindingOperationName="MAPSAllocate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d8fa4628-88d3-43fd-ac27-f70f9877b3fe" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/mockMAPSAllocateDeallocateUserBinding</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAllocateUserRequest>
+         <uk:MAPSOpsRequestHeader>
+            <uk:ClientRequestId>?</uk:ClientRequestId>
+            <uk:UserId>?</uk:UserId>
+            <uk:Benefit>?</uk:Benefit>
+            <uk:Operation>?</uk:Operation>
+            <uk:IPAddress>?</uk:IPAddress>
+            <uk:HostName>?</uk:HostName>
+            <uk:RequestDateTime>?</uk:RequestDateTime>
+         </uk:MAPSOpsRequestHeader>
+         <uk:MAPSAllocateUserRequestBody>
+            <uk:UserToBeAllocated>FF777777H HP Number</uk:UserToBeAllocated>
+            <uk:Benefit>?</uk:Benefit>
+            <uk:AssessmentId>Assessment Id of the Nino Selected</uk:AssessmentId>
+            <uk:AssessmentProviderLotId>?</uk:AssessmentProviderLotId>
+            <uk:AppointmentDateTime>?</uk:AppointmentDateTime>
+         </uk:MAPSAllocateUserRequestBody>
+      </uk:MAPSAllocateUserRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAllocateDeallocateUserEndpoint/MAPSAllocateRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="53e30f41-d10b-4a99-bed8-c0222a0c851b" isOneWay="false" action="http://uk.gov.dwp.maps" name="MAPSDeallocate" bindingOperationName="MAPSDeallocate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7620203b-80ca-4c95-a4de-362744f6af45" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/mockMAPSAllocateDeallocateUserBinding</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSDeallocateUserRequest>
+         <uk:MAPSOpsRequestHeader>
+            <uk:ClientRequestId>?</uk:ClientRequestId>
+            <uk:UserId>?</uk:UserId>
+            <uk:Benefit>?</uk:Benefit>
+            <uk:Operation>?</uk:Operation>
+            <uk:IPAddress>?</uk:IPAddress>
+            <uk:HostName>?</uk:HostName>
+            <uk:RequestDateTime>?</uk:RequestDateTime>
+         </uk:MAPSOpsRequestHeader>
+         <uk:MAPSDeallocateUserRequestBody>
+            <uk:AssessmentId>?</uk:AssessmentId>
+            <uk:AssessmentProviderLotId>?</uk:AssessmentProviderLotId>
+         </uk:MAPSDeallocateUserRequestBody>
+      </uk:MAPSDeallocateUserRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAllocateDeallocateUserEndpoint/MAPSDeallocateRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="c0868e0b-c473-4ea7-98ed-3a25df41e16a" wsaVersion="NONE" name="MAPSAssessmentMetadataDetailListBinding" type="wsdl" bindingName="{http://uk.gov.dwp.maps}MAPSAssessmentMetadataDetailListBinding" soapVersion="1_2" anonymous="optional" definition="file:/Users/shibumanoharan/Desktop/services/wsdl/get_assessment_metadata_detaillist.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/Users/shibumanoharan/Desktop/services/wsdl/get_assessment_metadata_detaillist.wsdl"><con:part><con:url>file:/Users/shibumanoharan/Desktop/services/wsdl/get_assessment_metadata_detaillist.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://uk.gov.dwp.maps" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://uk.gov.dwp.maps" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:maps="http://uk.gov.dwp.maps">
+  <wsdl:documentation>Name: get_assessment_metadata_detaillist WSDL
+		 Author: Amarnath
+		 
+		 
+		
+		 SOAP Version: 1.2
+		 Schema Versions update for WSDL v 1.0: 
+		 v1.4.1 		MAPSClientOpsBody.xsd 
+		 v1.4.2			MAPSBaseDataTypes.xsd
+		 v1.4.1			MAPSDocumentDataTypes.xsd
+		 v1.4			MAPSOpsHeader.xsd
+		 v1.4			MAPSReferencePhraseDataTypes.xsd
+		 v1.4			MAPSResponseFault.xsd
+		 v1.2			MAPSAssessmentMetaDataOpsBody.xsd
+		 v1.4			PIPAssessmentDataTypes.xsd
+		 v1.4			UCAssessmentDataTypes.xsd
+		 v1.11			OIF1_Download_XMLSchema.xsd
+		 v1.11			OIF2_Upload_XMLSchema.xsd
+		 v1.11			PIPAT_CommonDataTypes.xsd
+		 v1.11			PIPAT_SimpleDataTypes.xsd			
+		 
+		 
+		 WSDL Version History
+		 v 1.0 Initial version (based on WSDL v 1.0 XSDs)			build 0.0.24.0			09/10/2015</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://uk.gov.dwp.maps" elementFormDefault="qualified">
+      <xsd:include schemaLocation="../schema/MAPSOpsHeader.xsd"/>
+      <xsd:include schemaLocation="../schema/MAPSAssessmentMetaDataOpsBody.xsd"/>
+      <xsd:include schemaLocation="../schema/MAPSResponseFault.xsd"/>
+      <xsd:element name="MAPSAssessmentMetadataDetailListRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="maps:MAPSOpsRequestHeader"/>
+            <xsd:element ref="maps:MAPSAssessmentMetadataDetailListRequestBody"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="MAPSAssessmentMetadataDetailListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="maps:MAPSOpsResponseHeader"/>
+            <xsd:element ref="maps:MAPSAssessmentMetadataDetailListResponseBody" minOccurs="0" maxOccurs="1"/>
+            <xsd:element ref="maps:MAPSResponseFault" minOccurs="0" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <!--Message definitions for input and output-->
+  <wsdl:message name="MAPSAssessmentMetadataDetailListRequest">
+    <wsdl:part name="in" element="maps:MAPSAssessmentMetadataDetailListRequest"/>
+  </wsdl:message>
+  <wsdl:message name="MAPSAssessmentMetadataDetailListResponse">
+    <wsdl:part name="out" element="maps:MAPSAssessmentMetadataDetailListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="MAPSResponseFault">
+    <wsdl:part name="fault" element="maps:MAPSResponseFault"/>
+  </wsdl:message>
+  <!--Port (interface) definitions-->
+  <wsdl:portType name="MAPSAssessmentMetadataDetailListEndpoint">
+    <wsdl:operation name="MAPSAssessmentMetadataDetailList">
+      <wsdl:input name="MAPSAssessmentMetadataDetailListRequest" message="tns:MAPSAssessmentMetadataDetailListRequest"/>
+      <wsdl:output name="MAPSAssessmentMetadataDetailListResponse" message="tns:MAPSAssessmentMetadataDetailListResponse"/>
+      <wsdl:fault name="MAPSResponseFault" message="tns:MAPSResponseFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MAPSAssessmentMetadataDetailListBinding" type="tns:MAPSAssessmentMetadataDetailListEndpoint">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="MAPSAssessmentMetadataDetailList">
+      <soap12:operation soapAction="http://uk.gov.dwp.maps/getassessmentmetadatadetaillist" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="in" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="out" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MAPSResponseFault">
+        <soap12:fault name="MAPSResponseFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MAPSAssessmentMetadataDetailListEndpointService">
+    <wsdl:port name="MAPSAssessmentMetadataDetailListService" binding="tns:MAPSAssessmentMetadataDetailListBinding">
+      <soap12:address location="http://localhost:8181/cxf/getassessmentmetadatadetaillist/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:/Users/shibumanoharan/Desktop/services/schema/MAPSOpsHeader.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://uk.gov.dwp.maps" version="1.4" id="MAPSOpsHeader.xsd" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:maps="http://uk.gov.dwp.maps">
+  <!--Schema Description-->
+  <xs:annotation>
+    <xs:documentation xml:lang="en">Name: MAPSOpsHeader.xsd
+			 Author: Terry Hughes
+			 Purpose: Common Request and Response Header definitions for MAPS Operations
+
+			 Version History
+			 v0.1	MAPS Base Data Types Created											Terry Hughes		13/01/2015
+			 v0.2	Moved BenefitType into Ops Header from 									Terry Hughes		03/02/2015
+			 v0.3	Removed Security Token from Ops Header									Terry Hughes		16/03/2015
+			 v1.0	Promoted to Baseline													Terry Hughes		24/03/2015
+			 v1.1	Added IPAddress to MAPSOpsRequestHeaderType								Terry Hughes		16/04/2015
+			 v1.1	Added HostName to MAPSOpsRequestHeaderType								Terry Hughes		16/04/2015
+			 v1.1	Added RequestDateTime to MAPSOpsRequestHeaderType						Terry Hughes		16/04/2015
+			 v1.2	Promoted to v1.2														Terry Hughes		24/04/2015
+			 v1.2	Added targetNamespace(http://uk.gov.dwp.maps) and xmlns prefix			Terry Hughes		05/05/2015
+			 v1.3	Promoted to v1.3														Terry Hughes		22/05/2015
+			 v1.4	Promoted to v1.4														Terry Hughes		24/07/2015</xs:documentation>
+  </xs:annotation>
+  <!--Include Files-->
+  <!--Include Files-->
+  <!--Include Files-->
+  <xs:include schemaLocation="MAPSBaseDataTypes.xsd"/>
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <xs:complexType name="MAPSOpsRequestHeaderType">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="ClientRequestId" type="maps:MAPSRequestIdType"/>
+      <xs:element name="UserId" type="maps:MAPSUserIdType"/>
+      <xs:element name="Benefit" type="maps:MAPSBenefitType"/>
+      <xs:element name="Operation" type="maps:MAPSOperationType"/>
+      <xs:element name="IPAddress" type="maps:IPAddressType"/>
+      <xs:element name="HostName" type="maps:HostNameType"/>
+      <xs:element name="RequestDateTime" type="maps:DateTimeType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MAPSOpsResponseHeaderType">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="RequestHeader" type="maps:MAPSOpsRequestHeaderType"/>
+      <xs:element name="ResponseStatus" type="maps:MAPSResponseStatusType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Data Structures-->
+  <!--Data Structures-->
+  <!--Data Structures-->
+  <xs:element name="MAPSOpsRequestHeader" type="maps:MAPSOpsRequestHeaderType"/>
+  <xs:element name="MAPSOpsResponseHeader" type="maps:MAPSOpsResponseHeaderType"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/Users/shibumanoharan/Desktop/services/schema/MAPSBaseDataTypes.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://uk.gov.dwp.maps" version="1.4.1" id="MAPSBaseDataTypes.xsd" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:maps="http://uk.gov.dwp.maps">
+  <!--Schema Description-->
+  <xs:annotation>
+    <xs:documentation xml:lang="en">Name: MAPSBaseDataTypes.xsd
+			 Purpose: MAPS Common Base Data Types
+
+			 Version History
+			 v0.1	MAPS Base Data Types Created										Terry Hughes		13/01/2015
+			 v0.2	Re-defined BenefitType as MAPSBenefitType							Terry Hughes		03/02/2015
+			 v0.2	Added ConsultationLocationType										Terry Hughes		03/02/2015
+			 v0.3	Added Hours, Minutes types											Terry Hughes		13/02/2015
+			 v0.3	Changed AS and AP EventId type to integer							Terry Hughes		16/02/2015
+			 v0.3	Added AssessmentEditionType type									Terry Hughes		16/02/2015
+			 v0.3	Amended MAPS Operation names										Terry Hughes		16/02/2015
+			 v1.0	Promoted to Baseline												Terry Hughes		24/03/2015
+			 v1.0	Corrected NINO pattern												Terry Hughes		25/03/2015
+			 v1.1	Corrected MAPSAssessmentEditionType tag								Terry Hughes		14/04/2015
+			 v1.1	Removed excess Phrase data MAPS Operations							Terry Hughes		15/04/2015
+			 v1.1	Added IPAddressType													Terry Hughes		16/04/2015
+			 v1.1	Added HostNameType													Terry Hughes		16/04/2015
+			 v1.2	Promoted to v1.2													Terry Hughes		24/04/2015
+			 v1.2	Extended AP Event Id Range											Terry Hughes		24/04/2015
+			 v1.2	Added ReleaseAssessmentOutcomeType									Terry Hughes		28/04/2015
+			 v1.2	Added targetNamespace(http://uk.gov.dwp.maps)and xmlns prefix		Terry Hughes		05/05/2015
+			 v1.3	Promoted to v1.3													Terry Hughes		22/05/2015
+			 v1.3	Changed MAPSResponseStatusType. Removed maxInclusive restriction	Terry Hughes		02/06/2015
+			 v1.4	Changed MAPSBenefitType so that all benefits are 3 characters.		Terry Hughes		23/06/2015
+			 v1.4	Changed AddressType to MinLength = 1								Terry Hughes		08/07/2015
+			 v1.4	Changed AlternateLocalAssessmentIdType to MinLength = 1				Terry Hughes		08/07/2015
+			 v1.4	Changed FirstNameLastNameType to MinLength = 1						Terry Hughes		08/07/2015
+			 v1.4	Changed FirstNameType to MinLength = 1								Terry Hughes		08/07/2015
+			 v1.4	Changed LastNameType to MinLength = 1								Terry Hughes		08/07/2015
+			 v1.4	Changed LocalAssessmentIdType to MinLength = 1						Terry Hughes		08/07/2015
+			 v1.4	Changed MAPSAssessmentIdType to MinLength = 1						Terry Hughes		08/07/2015
+			 v1.4	Changed MAPSRequestIdType to MinLength = 1							Terry Hughes		08/07/2015
+			 v1.4	Changed MAPSUSerIdType to MinLength = 1								Terry Hughes		08/07/2015
+			 v1.4	Changed MiddleNameType to MinLength = 1								Terry Hughes		08/07/2015
+			 v1.4	Changed QCRejectReasonType to MinLength = 1							Terry Hughes		08/07/2015
+			 v1.4	Added [A-Z][a-z][0-9] pattern to AlternateLocalAssessmentIdType 	Terry Hughes		10/07/2015
+			 v1.4	Added [A-Z][a-z][0-9] pattern to LocalAssessmentIdType 				Terry Hughes		10/07/2015
+			 v1.4	Added [A-Z][a-z][0-9] pattern to MAPSAssessmentIdType 				Terry Hughes		10/07/2015
+			 v1.4	Added [A-Z][a-z][0-9] pattern to CRNType 							Terry Hughes		10/07/2015
+			 v1.4.1	Changed AlternateLocalAssessmentIdType pattern to [A-Za-z0-9]{1,100}	Terry Hughes		10/07/2015
+			 v1.4.1	Changed LocalAssessmentIdType pattern to [A-Za-z0-9]{1,100} 			Terry Hughes		10/07/2015
+			 v1.4.1	Changed MAPSAssessmentIdType pattern to [A-Za-z0-9]{1,100} 				Terry Hughes		10/07/2015
+			 v1.4.1	Changed CRNType pattern to [A-Za-z0-9]{1,18} 							Terry Hughes		10/07/2015</xs:documentation>
+  </xs:annotation>
+  <!--Include Files-->
+  <!--Include Files-->
+  <!--Include Files-->
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <xs:simpleType name="AddressType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlternateLocalAssessmentIdType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9]{1,100}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ASEventIdType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="999"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="APEventIdType">
+    <xs:restriction base="xs:integer">
+      <xs:annotation>
+        <xs:documentation xml:lang="en-gb">AP Event Range 1001-1999 == AP Events,
+					 AP Event Range 2000-2999 == AP Exception Events,
+					 AP Event Range 3000-3999 == Future Expansion,
+					 AP Event Range 4000-4999 == Future Expansion</xs:documentation>
+      </xs:annotation>
+      <xs:minInclusive value="1001"/>
+      <xs:maxInclusive value="4999"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="APLotIdType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="APIdType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CAPITA"/>
+      <xs:enumeration value="ATOSHEALTHCARE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AssessmentTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PBR"/>
+      <xs:enumeration value="F2F"/>
+      <xs:enumeration value="TI"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="BoolType">
+    <xs:restriction base="xs:boolean"/>
+  </xs:simpleType>
+  <xs:simpleType name="ConsultationLocationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Home"/>
+      <xs:enumeration value="Clinic"/>
+      <xs:enumeration value="Any"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CountMonthsType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="11"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CountType">
+    <xs:restriction base="xs:nonNegativeInteger"/>
+  </xs:simpleType>
+  <xs:simpleType name="CountYearsType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="99"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CRNType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9]{1,18}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DateType">
+    <xs:restriction base="xs:date"/>
+  </xs:simpleType>
+  <xs:simpleType name="DateTimeType">
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+  <xs:simpleType name="FirstNameLastNameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FirstNameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="GenderType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SX1"/>
+      <xs:enumeration value="SX2"/>
+      <xs:enumeration value="SX45000"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="HostNameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="HoursType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="HR1[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="IntegerType">
+    <xs:restriction base="xs:nonNegativeInteger"/>
+  </xs:simpleType>
+  <xs:simpleType name="IPAddressType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LanguageType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="LN[0-9]{1,2}"/>
+      <xs:pattern value="LN45000"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LastNameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LocalAssessmentIdType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9]{1,100}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MakeAvailableRequestTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MakeAvailable"/>
+      <xs:enumeration value="CancelAvailability"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSAssessmentEditionType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en-gb">Integer Value 1 == New
+				 Integer Value 3 == Rework</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:integer">
+      <!--1 == New-->
+      <!--3 == Rework-->
+      <xs:pattern value="1"/>
+      <xs:pattern value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSAssessmentIdType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9]{1,100}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSBenefitType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en-gb">PIP == Personal Independence Payment
+				 ESA == Employment Support Allowance
+				 UCR == Universal Credit</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PIP"/>
+      <xs:enumeration value="ESA"/>
+      <xs:enumeration value="UCR"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSOperationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Allocate"/>
+      <xs:enumeration value="Deallocate"/>
+      <xs:enumeration value="GetSyncList"/>
+      <xs:enumeration value="Download"/>
+      <xs:enumeration value="Refresh"/>
+      <xs:enumeration value="Submit"/>
+      <xs:enumeration value="Return"/>
+      <xs:enumeration value="AutoSave"/>
+      <xs:enumeration value="GetDocumentSummary"/>
+      <xs:enumeration value="GetDocument"/>
+      <xs:enumeration value="GetReferenceData"/>
+      <xs:enumeration value="GetPhraseData"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSRequestIdType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="512"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSResponseStatusType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSStateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotAvailableForOffline"/>
+      <xs:enumeration value="AvailableForOffline"/>
+      <xs:enumeration value="Allocated"/>
+      <xs:enumeration value="Downloaded"/>
+      <xs:enumeration value="Submitted"/>
+      <xs:enumeration value="Returned"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSUserIdType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="64"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MiddleNameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MinutesType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="MIN1[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NINOType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{2}[0-9]{6}[A-D]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PositiveIntegerType">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="QCRejectReasonType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ReleaseAssessmentOutcomeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RAFToDWP"/>
+      <xs:enumeration value="SubmitToDWP"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TelephoneType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="11"/>
+      <xs:maxLength value="15"/>
+      <xs:pattern value="[0-9]{15}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TimeType">
+    <xs:restriction base="xs:time"/>
+  </xs:simpleType>
+  <xs:simpleType name="YesNoNotApplicableCodeType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="PIPYA45[0-9]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <!--Data Structures-->
+  <!--Data Structures-->
+  <!--Data Structures-->
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/Users/shibumanoharan/Desktop/services/schema/MAPSAssessmentMetaDataOpsBody.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://uk.gov.dwp.maps" version="1.1" id="MAPSAssessmentMetaDataOpsBody.xsd" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:maps="http://uk.gov.dwp.maps">
+  <!--Schema Description-->
+  <xs:annotation>
+    <xs:documentation xml:lang="en">Name: MAPSAssessmentMetaDataOpsBody.xsd
+			 Author: Terry Hughes
+			 Purpose: Definitions for MAPS Assessment Meta Data Client Operations
+
+			 Version History
+			 v1.0	Created															Terry Hughes	10/08/2015
+			 v1.1	Removed AssessmentMetaDataSummaryList structures				Terry Hughes	17/09/2015
+			 v1.1	Redefined AssessmentMetaDataDetail structures as
+			 AssessmentMetaDataDetailList structures								Terry Hughes	17/09/2015
+			 v1.1	Corrected MAPSAssessmentMetadataDetailListRequestBodyType to 
+					specify minOccurs = 0											Terry Hughes	25/09/2015</xs:documentation>
+  </xs:annotation>
+  <!--Include Files-->
+  <!--Include Files-->
+  <!--Include Files-->
+  <xs:include schemaLocation="MAPSBaseDataTypes.xsd"/>
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <!--Assessment Metadata Detail List Request-->
+  <xs:complexType name="MAPSAssessmentMetadataDetailListRequestBodyType">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:choice>
+        <xs:element name="NINO" type="maps:NINOType" minOccurs="0"/>
+        <xs:element name="CRN" type="maps:CRNType" minOccurs="0"/>
+        <xs:element name="AllocatedUserId" type="maps:MAPSUserIdType" minOccurs="0"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Assessment Metadata Detail List Response-->
+  <!--Assessment Metadata Detail List Response Item-->
+  <xs:complexType name="MAPSAssessmentMetadataDetailListItemType">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <!--populated from MAPS Assessment Table-->
+      <xs:element name="AssessmentId" type="maps:MAPSAssessmentIdType"/>
+      <xs:element name="LocalAssessmentId" type="maps:LocalAssessmentIdType"/>
+      <xs:element name="AlternateLocalAssessmentId" type="maps:AlternateLocalAssessmentIdType"/>
+      <xs:element name="NINO" type="maps:NINOType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="CRN" type="maps:CRNType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="AssessmentType" type="maps:AssessmentTypeType"/>
+      <xs:element name="AssessmentEdition" type="maps:MAPSAssessmentEditionType"/>
+      <xs:element name="ChangeOfCircsOccurred" type="maps:BoolType"/>
+      <xs:element name="ConsultationLocation" type="maps:ConsultationLocationType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="CreatedDateTime" type="maps:DateTimeType"/>
+      <xs:element name="ReleaseOutcome" type="maps:ReleaseAssessmentOutcomeType" minOccurs="0" maxOccurs="1"/>
+      <!--populated from MAPS Assessment State Table-->
+      <xs:element name="State" type="maps:MAPSStateType"/>
+      <xs:element name="StateDateTime" type="maps:DateTimeType"/>
+      <!--populated from MAPS Assessment Allocation Table-->
+      <xs:element name="AllocatedUserId" type="maps:MAPSUserIdType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="AllocatedDateTime" type="maps:DateTimeType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="AllocatingUserId" type="maps:MAPSUserIdType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="AppointmentDateTime" type="maps:DateTimeType" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Assessment Metadata Detail List Response Body-->
+  <xs:complexType name="MAPSAssessmentMetadataDetailListResponseBodyType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="DetailListItem" type="maps:MAPSAssessmentMetadataDetailListItemType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Data Structures-->
+  <!--Data Structures-->
+  <!--Data Structures-->
+  <!--Assessment Metadata Detail List-->
+  <xs:element name="MAPSAssessmentMetadataDetailListRequestBody" type="maps:MAPSAssessmentMetadataDetailListRequestBodyType"/>
+  <xs:element name="MAPSAssessmentMetadataDetailListResponseBody" type="maps:MAPSAssessmentMetadataDetailListResponseBodyType"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/Users/shibumanoharan/Desktop/services/schema/MAPSResponseFault.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://uk.gov.dwp.maps" version="1.4" id="MAPSResponseFault.xsd" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:maps="http://uk.gov.dwp.maps">
+  <!--Schema Description-->
+  <xs:annotation>
+    <xs:documentation xml:lang="en">Name: MAPSResponseFault.xsd
+			 Author: Terry Hughes
+			 Purpose: Common Response Fault definitions for MAPS Operations
+			 (Could also be used for MAPS Event Service if required)
+
+			 Version History
+			 v0.1	MAPS Fault Data Types Created										Terry Hughes		15/01/2015
+			 v1.0	Promoted to Baseline												Terry Hughes		24/03/2015
+			 v1.1	Promoted to V1.1													Terry Hughes		16/04/2015
+			 v1.2	Promoted to v1.2													Terry Hughes		24/04/2015
+			 v1.2	Added targetNamespace(http://uk.gov.dwp.maps)and xmls prefix		Terry Hughes		05/05/2015
+			 v1.3	Promoted to v1.3													Terry Hughes		22/05/2015
+			 v1.3	Changed FaultCode to string											Terry Hughes		01/06/2015
+			 v1.4	Specified MinLength = 1 for MAPSFaultCodeType						Terry Hughes		08/07/2015
+			 v1.4	Specified MinLength = 1 for MAPSFaultStringType						Terry Hughes		08/07/2015
+			 v1.4	Specified MinLength = 1 for MAPSFaultActorType						Terry Hughes		08/07/2015
+			 v1.4	Specified MinLength = 1 for MAPSFaultDetailType						Terry Hughes		08/07/2015</xs:documentation>
+  </xs:annotation>
+  <!--Include Files-->
+  <!--Include Files-->
+  <!--Include Files-->
+  <xs:include schemaLocation="MAPSBaseDataTypes.xsd"/>
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <!--Simple Types-->
+  <xs:simpleType name="MAPSFaultCodeType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSFaultStringType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSFaultActorType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MAPSFaultDetailType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="1000"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <!--Complex Types-->
+  <xs:complexType name="MAPSResponseFaultItemType">
+    <xs:sequence>
+      <xs:element name="FaultCode" minOccurs="1" maxOccurs="1" type="maps:MAPSFaultCodeType"/>
+      <xs:element name="FaultString" minOccurs="1" maxOccurs="1" type="maps:MAPSFaultStringType"/>
+      <xs:element name="FaultActor" minOccurs="1" maxOccurs="1" type="maps:MAPSFaultActorType"/>
+      <xs:element name="FaultDetail" minOccurs="0" maxOccurs="1" type="maps:MAPSFaultDetailType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MAPSResponseFaultType">
+    <xs:sequence>
+      <xs:element name="FaultItem" minOccurs="0" maxOccurs="unbounded" type="maps:MAPSResponseFaultItemType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Data Structures-->
+  <!--Data Structures-->
+  <!--Data Structures-->
+  <xs:element name="MAPSResponseFault" type="maps:MAPSResponseFaultType"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8088/mockMAPSAssessmentMetadataDetailListBinding</con:endpoint><con:endpoint>http://localhost:8181/cxf/getassessmentmetadatadetaillist/</con:endpoint></con:endpoints><con:operation id="cbb30041-46ae-4d2d-8718-974270e3ca45" isOneWay="false" action="http://uk.gov.dwp.maps/getassessmentmetadatadetaillist" name="MAPSAssessmentMetadataDetailList" bindingOperationName="MAPSAssessmentMetadataDetailList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="082346a7-f2c5-4deb-99f1-b417f4967353" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/mockMAPSAssessmentMetadataDetailListBinding</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAssessmentMetadataDetailListRequest>
+         <uk:MAPSOpsRequestHeader>
+            <uk:ClientRequestId>?</uk:ClientRequestId>
+            <uk:UserId>?</uk:UserId>
+            <uk:Benefit>?</uk:Benefit>
+            <uk:Operation>?</uk:Operation>
+            <uk:IPAddress>?</uk:IPAddress>
+            <uk:HostName>?</uk:HostName>
+            <uk:RequestDateTime>?</uk:RequestDateTime>
+         </uk:MAPSOpsRequestHeader>
+         <uk:MAPSAssessmentMetadataDetailListRequestBody>
+            <!--You have a CHOICE of the next 3 items at this level-->
+            <!--Optional:-->
+            <uk:NINO>?</uk:NINO>
+            <!--Optional:-->
+            <uk:CRN>?</uk:CRN>
+            <!--Optional:-->
+            <uk:AllocatedUserId>?</uk:AllocatedUserId>
+         </uk:MAPSAssessmentMetadataDetailListRequestBody>
+      </uk:MAPSAssessmentMetadataDetailListRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService id="04b96307-7588-4017-aacb-fb1fc92ce39c" port="8088" path="/mockMAPSAllocateDeallocateUserBinding" host="Shibus-MacBook-Pro.local" name="MAPSAllocateDeallocateUserBinding MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="MAPSAllocate" id="ae267ce3-2acb-4872-9cb8-5c23ca3bc6f4" interface="MAPSAllocateDeallocateUserBinding" operation="MAPSAllocate"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+log.info(context.testCase);
+def holder = groovyUtils.getXmlHolder( mockRequest.requestContent );
+holder.namespaces["uk"] = "http://uk.gov.dwp.maps";
+if(holder.getNodeValue("//uk:AssessmentId") == "AA11111CD"){
+	// Fault Response for FF777777H
+	return "Response 2";
+}else{
+	return "Response 1";
+}
+</con:dispatchPath><con:response name="Response 1" id="1db72faf-8c86-4a9a-bf4c-63d3f0c19445" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:script>def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context );
+log.info(context.testCase);
+def holder = groovyUtils.getXmlHolder( mockRequest.requestContent );
+holder.namespaces["uk"] = "http://uk.gov.dwp.maps";
+
+context.ClientRequestId = holder.getNodeValue("//uk:ClientRequestId");
+context.UserId = holder.getNodeValue("//uk:UserId");
+context.Benefit = holder.getNodeValue("//uk:Benefit");
+context.Operation = holder.getNodeValue("//uk:Operation");
+context.IPAddress = holder.getNodeValue("//uk:IPAddress");
+context.HostName = holder.getNodeValue("//uk:HostName");
+context.RequestDateTime = holder.getNodeValue("//uk:RequestDateTime");
+
+context.ResponseStatus = 0;
+
+
+         </con:script><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAllocateUserResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>${ClientRequestId}</uk:ClientRequestId>
+               <uk:UserId>${UserId}</uk:UserId>
+               <uk:Benefit>${Benefit}</uk:Benefit>
+               <uk:Operation>${Operation}</uk:Operation>
+               <uk:IPAddress>${IPAddress}</uk:IPAddress>
+               <uk:HostName>${HostName}</uk:HostName>
+               <uk:RequestDateTime>${RequestDateTime}</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>${ResponseStatus}</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAllocateUserResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAllocateDeallocateUserEndpoint/MAPSAllocateResponse"/></con:response><con:response name="Response 2" id="1db72faf-8c86-4a9a-bf4c-63d3f0c19445" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:script>def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context );
+log.info(context.testCase);
+def holder = groovyUtils.getXmlHolder( mockRequest.requestContent );
+holder.namespaces["uk"] = "http://uk.gov.dwp.maps";
+
+context.ClientRequestId = holder.getNodeValue("//uk:ClientRequestId");
+context.UserId = holder.getNodeValue("//uk:UserId");
+context.Benefit = holder.getNodeValue("//uk:Benefit");
+context.Operation = holder.getNodeValue("//uk:Operation");
+context.IPAddress = holder.getNodeValue("//uk:IPAddress");
+context.HostName = holder.getNodeValue("//uk:HostName");
+context.RequestDateTime = holder.getNodeValue("//uk:RequestDateTime");
+
+context.ResponseStatus = 500;
+
+
+         </con:script><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAllocateUserResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>${ClientRequestId}</uk:ClientRequestId>
+               <uk:UserId>${UserId}</uk:UserId>
+               <uk:Benefit>${Benefit}</uk:Benefit>
+               <uk:Operation>${Operation}</uk:Operation>
+               <uk:IPAddress>${IPAddress}</uk:IPAddress>
+               <uk:HostName>${HostName}</uk:HostName>
+               <uk:RequestDateTime>${RequestDateTime}</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>${ResponseStatus}</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>9000</uk:FaultCode>
+               <uk:FaultString>Unable to Allocate</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAllocateUserResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAllocateDeallocateUserEndpoint/MAPSAllocateResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="MAPSDeallocate" id="e935f164-28be-4497-9d51-506e68fdf80d" interface="MAPSAllocateDeallocateUserBinding" operation="MAPSDeallocate"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+log.info(context.testCase);
+def holder = groovyUtils.getXmlHolder( mockRequest.requestContent );
+holder.namespaces["uk"] = "http://uk.gov.dwp.maps";
+if(holder.getNodeValue("//uk:ClientRequestId") == "AA111111C"){
+	// For already allocated assessment - business exception - return status 500 and fault code 9001
+	return "ResponseFault";
+} else{
+	return "Response 1";
+}
+
+</con:dispatchPath><con:response name="Response 1" id="e352adc4-580a-4fec-adcf-86d930ceb1f5" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSDeallocateUserResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>?</uk:ClientRequestId>
+               <uk:UserId>?</uk:UserId>
+               <uk:Benefit>?</uk:Benefit>
+               <uk:Operation>?</uk:Operation>
+               <uk:IPAddress>?</uk:IPAddress>
+               <uk:HostName>?</uk:HostName>
+               <uk:RequestDateTime>?</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>De Allocated</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSDeallocateUserResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAllocateDeallocateUserEndpoint/MAPSDeallocateResponse"/></con:response><con:response name="ResponseFault" id="3c3e5472-973f-4901-8fbd-a700b329734d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+   <soap:Body>
+      <MAPSDeallocateUserResponse xmlns="http://uk.gov.dwp.maps">
+         <MAPSOpsResponseHeader>
+            <RequestHeader>
+               <ClientRequestId>123</ClientRequestId>
+               <UserId>tester</UserId>
+               <Benefit>PIP</Benefit>
+               <Operation>Deallocate</Operation>
+               <IPAddress>1.1.1.1</IPAddress>
+               <HostName>test</HostName>
+               <RequestDateTime>2015-10-08T15:00:00.000</RequestDateTime>
+            </RequestHeader>
+            <ResponseStatus>500</ResponseStatus>
+         </MAPSOpsResponseHeader>
+         <MAPSResponseFault>
+            <FaultItem>
+               <FaultCode>9001</FaultCode>
+               <FaultString>Deallocate request failed</FaultString>
+               <FaultActor>Dellocate User Flow</FaultActor>
+               <FaultDetail><![CDATA[Assessment state is invalid
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSDeallocateUserRequest>
+         <uk:MAPSOpsRequestHeader>
+            <uk:ClientRequestId>123</uk:ClientRequestId>
+            <uk:UserId>tester</uk:UserId>
+            <uk:Benefit>PIP</uk:Benefit>
+            <uk:Operation>Deallocate</uk:Operation>
+            <uk:IPAddress>1.1.1.1</uk:IPAddress>
+            <uk:HostName>test</uk:HostName>
+            <uk:RequestDateTime>2015-10-08T15:00:00.000</uk:RequestDateTime>
+         </uk:MAPSOpsRequestHeader>
+         <uk:MAPSDeallocateUserRequestBody>
+            <uk:AssessmentId>PIP39425</uk:AssessmentId>
+            <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>          
+         </uk:MAPSDeallocateUserRequestBody>
+      </uk:MAPSDeallocateUserRequest>
+   </soap:Body>
+</soap:Envelope>
+AvailableForOffline]]]]>><![CDATA[</FaultDetail>
+            </FaultItem>
+         </MAPSResponseFault>
+      </MAPSDeallocateUserResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAllocateDeallocateUserEndpoint/MAPSDeallocateResponse"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:mockService id="b7fa941e-79b7-4252-91ca-963bdb15a9fe" port="8088" path="/mockMAPSAssessmentMetadataDetailListBinding" host="Shibus-MacBook-Pro.local" name="MAPSAssessmentMetadataDetailListBinding MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="MAPSAssessmentMetadataDetailList" id="e9f70f57-b002-43b7-8442-25c9d68785da" interface="MAPSAssessmentMetadataDetailListBinding" operation="MAPSAssessmentMetadataDetailList"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+log.info(context.testCase);
+def holder = groovyUtils.getXmlHolder( mockRequest.requestContent );
+holder.namespaces["uk"] = "http://uk.gov.dwp.maps";
+if(holder.getNodeValue("//uk:NINO") == "FF777777F"){
+	// NINO Search - 2 records
+	return "Response 4";
+}else if(holder.getNodeValue("//uk:NINO") == "FF777777I"){
+	// NINO Search - 4 records - 2 with Lot Id 1, 2 with Lot Id 2
+	return "Response 13";
+}else if(holder.getNodeValue("//uk:NINO") == "FF777777J"){
+	// NINO Search - 4 records - with Lot Id 2
+	return "Response 14";
+}else if(holder.getNodeValue("//uk:NINO") == "FF777777E"){
+	// NINO Search - 1 record
+	return "Response 5";
+}else if(holder.getNodeValue("//uk:NINO") == "FF777777G"){
+	// NINO Search - no record
+	return "Response 6";
+}else if(holder.getNodeValue("//uk:NINO") == "FF777777H"){
+	// NINO Search - 1 record - to test fault allocations
+	return "Response 7"
+}else if(holder.getNodeValue("//uk:CRN") == "123456789012345678"){
+	// CRN Search
+	return "Response 8"
+}else if(holder.getNodeValue("//uk:NINO") == "MA000001A"){
+	// Real Service Response
+	return "Response 9"
+}else if(holder.getNodeValue("//uk:NINO") == "MA000001B"){
+	// Data null check
+	return "Response 10"
+}else if(holder.getNodeValue("//uk:NINO") == "MA000001C"){
+	// missing allocated user id
+	return "Response 12"
+//}else if(holder.getNodeValue("//uk:AllocatedUserId") == "46004105"){
+	// Data null check
+//	return "Response 11"
+}else if(holder.getNodeValue("//uk:AllocatedUserId") == "12345678"){
+	return "Response 1";
+}else if(holder.getNodeValue("//uk:AllocatedUserId") == "12345679"){
+	return "Response 2";
+}else if(holder.getNodeValue("//uk:AllocatedUserId") == "12345677"){
+	// Lot ID test for HP
+	return "Response 15";
+}else if(holder.getNodeValue("//uk:AllocatedUserId") == "12345676"){
+	// Lot ID test for HP
+	return "Response 18";
+}else if(holder.getNodeValue("//uk:AllocatedUserId") == "46004105"){
+	// Lot ID test - real service- HP - PIP 1436
+	return "Response 16";
+}else if(holder.getNodeValue("//uk:NINO") == "AA111111D"){
+	// Lot ID 1 - 2Nos , 2 - 1 No, 3 - 1 No
+	return "Response 17"
+}else{
+	return "Response 3";
+}
+</con:dispatchPath><con:response name="Response 1" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAssessmentMetadataDetailListResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>?</uk:ClientRequestId>
+               <uk:UserId>?</uk:UserId>
+               <uk:Benefit>?</uk:Benefit>
+               <uk:Operation>?</uk:Operation>
+               <uk:IPAddress>?</uk:IPAddress>
+               <uk:HostName>?</uk:HostName>
+               <uk:RequestDateTime>?</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>?</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSAssessmentMetadataDetailListResponseBody>
+            <uk:DetailListItem>
+               <uk:AssessmentId>AA111111A</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>AA111111A</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Submitted</uk:State>
+               <uk:StateDateTime>?</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId>12345678</uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2014 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>
+            </uk:DetailListItem>
+            <uk:DetailListItem>
+               <uk:AssessmentId>AA111111A</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <!--Optional:-->
+               <uk:NINO>AA111111A</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Allocated</uk:State>
+               <uk:StateDateTime>?</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId>12345678</uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>
+            </uk:DetailListItem>
+            <uk:DetailListItem>
+               <uk:AssessmentId>AA111111A</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <!--Optional:-->
+               <uk:NINO>AA111111A</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Downloaded</uk:State>
+               <uk:StateDateTime>?</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId>12345678</uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>
+            </uk:DetailListItem>
+            <uk:DetailListItem>
+               <uk:AssessmentId>AA111111A</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <!--Optional:-->
+               <uk:NINO>AA111111A</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Allocated</uk:State>
+               <uk:StateDateTime>?</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId>12345678</uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/08/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>
+            </uk:DetailListItem>
+         </uk:MAPSAssessmentMetadataDetailListResponseBody>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 2" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAssessmentMetadataDetailListResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>?</uk:ClientRequestId>
+               <uk:UserId>?</uk:UserId>
+               <uk:Benefit>?</uk:Benefit>
+               <uk:Operation>?</uk:Operation>
+               <uk:IPAddress>?</uk:IPAddress>
+               <uk:HostName>?</uk:HostName>
+               <uk:RequestDateTime>?</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>?</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSAssessmentMetadataDetailListResponseBody>
+            <uk:DetailListItem>
+               <uk:AssessmentId>AA111111B</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>?</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>1234567890123</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Submitted</uk:State>
+               <uk:StateDateTime>?</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId>12345679</uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2014 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345679</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>
+            </uk:DetailListItem>
+         </uk:MAPSAssessmentMetadataDetailListResponseBody>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 3" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAssessmentMetadataDetailListResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>?</uk:ClientRequestId>
+               <uk:UserId>?</uk:UserId>
+               <uk:Benefit>?</uk:Benefit>
+               <uk:Operation>?</uk:Operation>
+               <uk:IPAddress>?</uk:IPAddress>
+               <uk:HostName>?</uk:HostName>
+               <uk:RequestDateTime>?</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>?</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSAssessmentMetadataDetailListResponseBody></uk:MAPSAssessmentMetadataDetailListResponseBody>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 4" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAssessmentMetadataDetailListResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>?</uk:ClientRequestId>
+               <uk:UserId>?</uk:UserId>
+               <uk:Benefit>?</uk:Benefit>
+               <uk:Operation>?</uk:Operation>
+               <uk:IPAddress>?</uk:IPAddress>
+               <uk:HostName>?</uk:HostName>
+               <uk:RequestDateTime>?</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>?</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSAssessmentMetadataDetailListResponseBody>
+
+            <uk:DetailListItem>
+               <uk:AssessmentId>FF777777F</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>FF777777F</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Available For Offline</uk:State>
+               <uk:StateDateTime>2009-06-15T13:45:30</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId></uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>            
+            </uk:DetailListItem>
+
+            <uk:DetailListItem>
+               <uk:AssessmentId>FF777777F</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>FF777777F</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Submitted</uk:State>
+               <uk:StateDateTime>06/07/2015 15:00</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId></uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>            
+            </uk:DetailListItem>
+         </uk:MAPSAssessmentMetadataDetailListResponseBody>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 5" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAssessmentMetadataDetailListResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>?</uk:ClientRequestId>
+               <uk:UserId>?</uk:UserId>
+               <uk:Benefit>?</uk:Benefit>
+               <uk:Operation>?</uk:Operation>
+               <uk:IPAddress>?</uk:IPAddress>
+               <uk:HostName>?</uk:HostName>
+               <uk:RequestDateTime>?</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>?</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSAssessmentMetadataDetailListResponseBody>
+
+            <uk:DetailListItem>
+               <uk:AssessmentId>FF777777E</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>FF777777E</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Available For Offline</uk:State>
+               <uk:StateDateTime>06/07/2015 15:00</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId></uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>            
+            </uk:DetailListItem>
+         </uk:MAPSAssessmentMetadataDetailListResponseBody>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 6" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAssessmentMetadataDetailListResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>?</uk:ClientRequestId>
+               <uk:UserId>?</uk:UserId>
+               <uk:Benefit>?</uk:Benefit>
+               <uk:Operation>?</uk:Operation>
+               <uk:IPAddress>?</uk:IPAddress>
+               <uk:HostName>?</uk:HostName>
+               <uk:RequestDateTime>?</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>?</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSAssessmentMetadataDetailListResponseBody>
+         </uk:MAPSAssessmentMetadataDetailListResponseBody>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 7" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAssessmentMetadataDetailListResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>?</uk:ClientRequestId>
+               <uk:UserId>?</uk:UserId>
+               <uk:Benefit>?</uk:Benefit>
+               <uk:Operation>?</uk:Operation>
+               <uk:IPAddress>?</uk:IPAddress>
+               <uk:HostName>?</uk:HostName>
+               <uk:RequestDateTime>?</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>?</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSAssessmentMetadataDetailListResponseBody>
+
+            <uk:DetailListItem>
+               <uk:AssessmentId>AA11111CD</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>FF777777H</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Allocated</uk:State>
+               <uk:StateDateTime>06/07/2015 15:00</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId>12345679</uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>            
+            </uk:DetailListItem>
+         </uk:MAPSAssessmentMetadataDetailListResponseBody>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 8" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAssessmentMetadataDetailListResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>?</uk:ClientRequestId>
+               <uk:UserId>?</uk:UserId>
+               <uk:Benefit>?</uk:Benefit>
+               <uk:Operation>?</uk:Operation>
+               <uk:IPAddress>?</uk:IPAddress>
+               <uk:HostName>?</uk:HostName>
+               <uk:RequestDateTime>?</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>?</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSAssessmentMetadataDetailListResponseBody>
+
+            <uk:DetailListItem>
+               <uk:AssessmentId>123456789012345678</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO></uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>123456789012345678</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Available</uk:State>
+               <uk:StateDateTime>06/07/2015 15:00</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId></uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>            
+            </uk:DetailListItem>
+         </uk:MAPSAssessmentMetadataDetailListResponseBody>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 9" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+   <soap:Body>
+      <MAPSAssessmentMetadataDetailListResponse xmlns="http://uk.gov.dwp.maps">
+         <MAPSOpsResponseHeader>
+            <RequestHeader>
+               <ClientRequestId>?</ClientRequestId>
+               <UserId>12345678</UserId>
+               <Benefit>PIP</Benefit>
+               <Operation>GetAssessmentMetadata</Operation>
+               <IPAddress>1.2.3.4</IPAddress>
+               <HostName>localhost</HostName>
+               <RequestDateTime>2015-11-10T12:10:10</RequestDateTime>
+            </RequestHeader>
+            <ResponseStatus>0</ResponseStatus>
+         </MAPSOpsResponseHeader>
+         <MAPSAssessmentMetadataDetailListResponseBody>
+            <DetailListItem>
+               <AssessmentId>PIP43776</AssessmentId>
+               <LocalAssessmentId>43776</LocalAssessmentId>
+               <AlternateLocalAssessmentId>295</AlternateLocalAssessmentId>
+               
+               <NINO>MA000001A</NINO>
+               <AssessmentProviderLotId>1</AssessmentProviderLotId>
+               <AssessmentType>F2F</AssessmentType>
+               <AssessmentEdition>1</AssessmentEdition>
+               <ChangeOfCircsOccurred>false</ChangeOfCircsOccurred>
+               <ConsultationLocation>Home</ConsultationLocation>
+               <CreatedDateTime>2015-11-05T12:53:44</CreatedDateTime>
+               <State>AvailableForOffline</State>
+               <StateDateTime>2015-11-05T12:55:46</StateDateTime>
+               <AllocatedUserId>46004105</AllocatedUserId>
+               <AllocatedDateTime>2015-11-06T09:16:19</AllocatedDateTime>
+               <AllocatingUserId>matt</AllocatingUserId>
+               <AppointmentDateTime>2015-08-14T15:00:00</AppointmentDateTime>
+            </DetailListItem>
+         </MAPSAssessmentMetadataDetailListResponseBody>
+      </MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 10" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+   <soap:Body>
+      <MAPSAssessmentMetadataDetailListResponse xmlns="http://uk.gov.dwp.maps">
+         <MAPSOpsResponseHeader>
+            <RequestHeader>
+               <ClientRequestId>?</ClientRequestId>
+               <UserId>12345678</UserId>
+               <Benefit>PIP</Benefit>
+               <Operation>GetAssessmentMetadata</Operation>
+               <IPAddress>1.2.3.4</IPAddress>
+               <HostName>localhost</HostName>
+               <RequestDateTime>2015-11-10T12:10:10</RequestDateTime>
+            </RequestHeader>
+            <ResponseStatus>0</ResponseStatus>
+         </MAPSOpsResponseHeader>
+         <MAPSAssessmentMetadataDetailListResponseBody>
+            <DetailListItem>
+               <AssessmentId></AssessmentId>
+               <LocalAssessmentId>43776</LocalAssessmentId>
+               <AlternateLocalAssessmentId>295</AlternateLocalAssessmentId>
+               
+               <NINO>MA000001B</NINO>
+               <AssessmentProviderLotId>1</AssessmentProviderLotId>
+               <AssessmentType>F2F</AssessmentType>
+               <AssessmentEdition>1</AssessmentEdition>
+               <ChangeOfCircsOccurred>false</ChangeOfCircsOccurred>
+               <ConsultationLocation>Home</ConsultationLocation>
+               <CreatedDateTime>2015-11-05T12:53:44</CreatedDateTime>
+               <State></State>
+               <StateDateTime></StateDateTime>
+               <AllocatedUserId></AllocatedUserId>
+               <AllocatedDateTime></AllocatedDateTime>
+               <AllocatingUserId></AllocatingUserId>
+               <AppointmentDateTime>2015-08-14T15:00:00</AppointmentDateTime>
+            </DetailListItem>
+         </MAPSAssessmentMetadataDetailListResponseBody>
+      </MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 11" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+   <soap:Body>
+      <MAPSAssessmentMetadataDetailListResponse xmlns="http://uk.gov.dwp.maps">
+         <MAPSOpsResponseHeader>
+            <RequestHeader>
+               <ClientRequestId>?</ClientRequestId>
+               <UserId>12345678</UserId>
+               <Benefit>PIP</Benefit>
+               <Operation>GetAssessmentMetadata</Operation>
+               <IPAddress>1.2.3.4</IPAddress>
+               <HostName>localhost</HostName>
+               <RequestDateTime>2015-11-10T15:39:00</RequestDateTime>
+            </RequestHeader>
+            <ResponseStatus>0</ResponseStatus>
+         </MAPSOpsResponseHeader>
+         <MAPSAssessmentMetadataDetailListResponseBody>
+            <DetailListItem>
+               <AssessmentId>PIP44289</AssessmentId>
+               <LocalAssessmentId>44289</LocalAssessmentId>
+               <AlternateLocalAssessmentId>295</AlternateLocalAssessmentId>
+               <NINO>MA000002A</NINO>
+               <AssessmentProviderLotId>1</AssessmentProviderLotId>
+               <AssessmentType>F2F</AssessmentType>
+               <AssessmentEdition>1</AssessmentEdition>
+               <ChangeOfCircsOccurred>false</ChangeOfCircsOccurred>
+               <ConsultationLocation>Home</ConsultationLocation>
+               <CreatedDateTime>2015-11-10T13:51:29</CreatedDateTime>
+               <State>NotAvailableForOffline</State>
+               <StateDateTime>2015-11-10T13:51:30</StateDateTime>
+               <AllocatedUserId>46004105</AllocatedUserId>
+               <AllocatedDateTime>2015-11-10T14:03:39</AllocatedDateTime>
+               <AllocatingUserId>matt</AllocatingUserId>
+               <AppointmentDateTime>2015-08-14T15:00:00</AppointmentDateTime>
+            </DetailListItem>
+         </MAPSAssessmentMetadataDetailListResponseBody>
+      </MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 12" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+   <soap:Body>
+      <MAPSAssessmentMetadataDetailListResponse xmlns="http://uk.gov.dwp.maps">
+         <MAPSOpsResponseHeader>
+            <RequestHeader>
+               <ClientRequestId>?</ClientRequestId>
+               <UserId>12345678</UserId>
+               <Benefit>PIP</Benefit>
+               <Operation>GetAssessmentMetadata</Operation>
+               <IPAddress>1.2.3.4</IPAddress>
+               <HostName>localhost</HostName>
+               <RequestDateTime>2015-11-10T12:10:10</RequestDateTime>
+            </RequestHeader>
+            <ResponseStatus>0</ResponseStatus>
+         </MAPSOpsResponseHeader>
+         <MAPSAssessmentMetadataDetailListResponseBody>
+            <DetailListItem>
+               <AssessmentId></AssessmentId>
+               <LocalAssessmentId>43776</LocalAssessmentId>
+               <AlternateLocalAssessmentId>295</AlternateLocalAssessmentId>
+               <AssessmentProviderLotId>1</AssessmentProviderLotId>
+               <NINO>MA000001C</NINO>
+               <AssessmentProviderLotId>1</AssessmentProviderLotId>
+               <AssessmentType>F2F</AssessmentType>
+               <AssessmentEdition>1</AssessmentEdition>
+               <ChangeOfCircsOccurred>false</ChangeOfCircsOccurred>
+               <ConsultationLocation>Home</ConsultationLocation>
+               <CreatedDateTime>2015-11-05T12:53:44</CreatedDateTime>
+               <State></State>
+               <StateDateTime></StateDateTime>
+               <AllocatedUserId></AllocatedUserId>
+               <AllocatedDateTime></AllocatedDateTime>
+               <AppointmentDateTime>2015-08-14T15:00:00</AppointmentDateTime>
+            </DetailListItem>
+         </MAPSAssessmentMetadataDetailListResponseBody>
+      </MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 13" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAssessmentMetadataDetailListResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>?</uk:ClientRequestId>
+               <uk:UserId>?</uk:UserId>
+               <uk:Benefit>?</uk:Benefit>
+               <uk:Operation>?</uk:Operation>
+               <uk:IPAddress>?</uk:IPAddress>
+               <uk:HostName>?</uk:HostName>
+               <uk:RequestDateTime>?</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>?</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSAssessmentMetadataDetailListResponseBody>
+
+            <uk:DetailListItem>
+               <uk:AssessmentId>FF777777I</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>FF777777I</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Available For Offline</uk:State>
+               <uk:StateDateTime>2009-06-15T13:45:30</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId></uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>            
+            </uk:DetailListItem>
+
+            <uk:DetailListItem>
+               <uk:AssessmentId>FF777777I</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>FF777777I</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Submitted</uk:State>
+               <uk:StateDateTime>06/07/2015 15:00</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId></uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>            
+            </uk:DetailListItem>
+            <uk:DetailListItem>
+               <uk:AssessmentId>FF777777I</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>2</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>FF777777I</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Submitted</uk:State>
+               <uk:StateDateTime>06/07/2015 15:00</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId></uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>            
+            </uk:DetailListItem>
+            <uk:DetailListItem>
+               <uk:AssessmentId>FF777777I</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>2</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>FF777777I</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Submitted</uk:State>
+               <uk:StateDateTime>06/07/2015 15:00</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId></uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>            
+            </uk:DetailListItem>
+         </uk:MAPSAssessmentMetadataDetailListResponseBody>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 14" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAssessmentMetadataDetailListResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>?</uk:ClientRequestId>
+               <uk:UserId>?</uk:UserId>
+               <uk:Benefit>?</uk:Benefit>
+               <uk:Operation>?</uk:Operation>
+               <uk:IPAddress>?</uk:IPAddress>
+               <uk:HostName>?</uk:HostName>
+               <uk:RequestDateTime>?</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>?</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSAssessmentMetadataDetailListResponseBody>
+
+            <uk:DetailListItem>
+               <uk:AssessmentId>FF777777J</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>2</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>FF777777J</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Available For Offline</uk:State>
+               <uk:StateDateTime>2009-06-15T13:45:30</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId></uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>            
+            </uk:DetailListItem>
+
+            <uk:DetailListItem>
+               <uk:AssessmentId>FF777777J</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>2</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>FF777777J</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Submitted</uk:State>
+               <uk:StateDateTime>06/07/2015 15:00</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId></uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>            
+            </uk:DetailListItem>
+            <uk:DetailListItem>
+               <uk:AssessmentId>FF777777J</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>2</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>FF777777J</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Submitted</uk:State>
+               <uk:StateDateTime>06/07/2015 15:00</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId></uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>            
+            </uk:DetailListItem>
+            <uk:DetailListItem>
+               <uk:AssessmentId>FF777777J</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>2</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>FF777777J</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Submitted</uk:State>
+               <uk:StateDateTime>06/07/2015 15:00</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId></uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>            
+            </uk:DetailListItem>
+         </uk:MAPSAssessmentMetadataDetailListResponseBody>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 15" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAssessmentMetadataDetailListResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>?</uk:ClientRequestId>
+               <uk:UserId>?</uk:UserId>
+               <uk:Benefit>?</uk:Benefit>
+               <uk:Operation>?</uk:Operation>
+               <uk:IPAddress>?</uk:IPAddress>
+               <uk:HostName>?</uk:HostName>
+               <uk:RequestDateTime>?</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>?</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSAssessmentMetadataDetailListResponseBody>
+            <uk:DetailListItem>
+               <uk:AssessmentId>AA111111D</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>AA111111D</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Submitted</uk:State>
+               <uk:StateDateTime>?</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId>12345677</uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2014 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345677</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>
+            </uk:DetailListItem>
+            <uk:DetailListItem>
+               <uk:AssessmentId>AA111111D</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AssessmentProviderLotId>2</uk:AssessmentProviderLotId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <!--Optional:-->
+               <uk:NINO>AA111111D</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Allocated</uk:State>
+               <uk:StateDateTime>?</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId>12345677</uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 12:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345677</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>
+            </uk:DetailListItem>           
+            
+         </uk:MAPSAssessmentMetadataDetailListResponseBody>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 16" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+   <soap:Body>
+      <MAPSAssessmentMetadataDetailListResponse xmlns="http://uk.gov.dwp.maps">
+         <MAPSOpsResponseHeader>
+            <RequestHeader>
+               <ClientRequestId>46004105</ClientRequestId>
+               <UserId>12345678</UserId>
+               <Benefit>PIP</Benefit>
+               <Operation>GetAssessmentMetadata</Operation>
+               <IPAddress>1.2.3.4</IPAddress>
+               <HostName>localhost</HostName>
+               <RequestDateTime>2015-11-13T14:21:05</RequestDateTime>
+            </RequestHeader>
+            <ResponseStatus>0</ResponseStatus>
+         </MAPSOpsResponseHeader>
+         <MAPSAssessmentMetadataDetailListResponseBody>
+            <DetailListItem>
+               <AssessmentId>PIP45825</AssessmentId>
+               <LocalAssessmentId>45825</LocalAssessmentId>
+               <AlternateLocalAssessmentId>295</AlternateLocalAssessmentId>
+               <NINO>MA000003A</NINO>
+               <AssessmentProviderLotId>1</AssessmentProviderLotId>
+               <AssessmentType>F2F</AssessmentType>
+               <AssessmentEdition>1</AssessmentEdition>
+               <ChangeOfCircsOccurred>false</ChangeOfCircsOccurred>
+               <ConsultationLocation>Home</ConsultationLocation>
+               <CreatedDateTime>2015-11-12T09:26:21</CreatedDateTime>
+               <State>Allocated</State>
+               <StateDateTime>2015-11-12T10:55:08</StateDateTime>
+               <AllocatedUserId>46004105</AllocatedUserId>
+               <AllocatedDateTime>2015-11-12T10:55:08</AllocatedDateTime>
+               <AllocatingUserId>12345678</AllocatingUserId>
+               <AppointmentDateTime>2015-11-12T10:55:07</AppointmentDateTime>
+            </DetailListItem>
+            <DetailListItem>
+               <AssessmentId>PIP46593</AssessmentId>
+               <LocalAssessmentId>46593</LocalAssessmentId>
+               <AlternateLocalAssessmentId>295</AlternateLocalAssessmentId>
+               <NINO>MA000004A</NINO>
+               <AssessmentProviderLotId>1</AssessmentProviderLotId>
+               <AssessmentType>F2F</AssessmentType>
+               <AssessmentEdition>1</AssessmentEdition>
+               <ChangeOfCircsOccurred>false</ChangeOfCircsOccurred>
+               <ConsultationLocation>Home</ConsultationLocation>
+               <CreatedDateTime>2015-11-12T13:04:09</CreatedDateTime>
+               <State>NotAvailableForOffline</State>
+               <StateDateTime>2015-11-12T13:04:09</StateDateTime>
+               <AllocatedUserId>46004105</AllocatedUserId>
+               <AllocatedDateTime>2015-11-12T13:06:14</AllocatedDateTime>
+               <AllocatingUserId>12345678</AllocatingUserId>
+               <AppointmentDateTime>2015-11-12T13:06:20</AppointmentDateTime>
+            </DetailListItem>
+            <DetailListItem>
+               <AssessmentId>PIP51457</AssessmentId>
+               <LocalAssessmentId>51457</LocalAssessmentId>
+               <AlternateLocalAssessmentId>295</AlternateLocalAssessmentId>
+               <NINO>MA000010A</NINO>
+               <AssessmentProviderLotId>1</AssessmentProviderLotId>
+               <AssessmentType>F2F</AssessmentType>
+               <AssessmentEdition>1</AssessmentEdition>
+               <ChangeOfCircsOccurred>false</ChangeOfCircsOccurred>
+               <ConsultationLocation>Home</ConsultationLocation>
+               <CreatedDateTime>2015-11-13T13:13:05</CreatedDateTime>
+               <State>Downloaded</State>
+               <StateDateTime>2015-11-13T13:25:39</StateDateTime>
+               <AllocatedUserId>46004105</AllocatedUserId>
+               <AllocatedDateTime>2015-11-13T13:25:12</AllocatedDateTime>
+               <AllocatingUserId>matt</AllocatingUserId>
+               <AppointmentDateTime>2015-08-14T15:00:00</AppointmentDateTime>
+            </DetailListItem>
+            <DetailListItem>
+               <AssessmentId>PIP47361</AssessmentId>
+               <LocalAssessmentId>47361</LocalAssessmentId>
+               <AlternateLocalAssessmentId>295</AlternateLocalAssessmentId>
+               <NINO>MA000005A</NINO>
+               <AssessmentProviderLotId>1</AssessmentProviderLotId>
+               <AssessmentType>F2F</AssessmentType>
+               <AssessmentEdition>1</AssessmentEdition>
+               <ChangeOfCircsOccurred>false</ChangeOfCircsOccurred>
+               <ConsultationLocation>Home</ConsultationLocation>
+               <CreatedDateTime>2015-11-12T13:59:33</CreatedDateTime>
+               <State>AvailableForOffline</State>
+               <StateDateTime>2015-11-12T14:02:19</StateDateTime>
+               <AllocatedUserId>46004105</AllocatedUserId>
+               <AllocatedDateTime>2015-11-12T14:04:35</AllocatedDateTime>
+               <AllocatingUserId>matt</AllocatingUserId>
+               <AppointmentDateTime>2015-08-14T15:00:00</AppointmentDateTime>
+            </DetailListItem>
+            <DetailListItem>
+               <AssessmentId>PIP49921</AssessmentId>
+               <LocalAssessmentId>49921</LocalAssessmentId>
+               <AlternateLocalAssessmentId>295</AlternateLocalAssessmentId>
+               <CRN>11112222</CRN>
+               <AssessmentProviderLotId>1</AssessmentProviderLotId>
+               <AssessmentType>F2F</AssessmentType>
+               <AssessmentEdition>1</AssessmentEdition>
+               <ChangeOfCircsOccurred>false</ChangeOfCircsOccurred>
+               <ConsultationLocation>Home</ConsultationLocation>
+               <CreatedDateTime>2015-11-13T10:59:34</CreatedDateTime>
+               <State>AvailableForOffline</State>
+               <StateDateTime>2015-11-13T11:00:18</StateDateTime>
+               <AllocatedUserId>46004105</AllocatedUserId>
+               <AllocatedDateTime>2015-11-13T11:28:43</AllocatedDateTime>
+               <AllocatingUserId>matt</AllocatingUserId>
+               <AppointmentDateTime>2015-08-14T15:00:00</AppointmentDateTime>
+            </DetailListItem>
+            <DetailListItem>
+               <AssessmentId>PIP51201</AssessmentId>
+               <LocalAssessmentId>51201</LocalAssessmentId>
+               <AlternateLocalAssessmentId>295</AlternateLocalAssessmentId>
+               <NINO>MA000009A</NINO>
+               <AssessmentProviderLotId>1</AssessmentProviderLotId>
+               <AssessmentType>F2F</AssessmentType>
+               <AssessmentEdition>1</AssessmentEdition>
+               <ChangeOfCircsOccurred>false</ChangeOfCircsOccurred>
+               <ConsultationLocation>Home</ConsultationLocation>
+               <CreatedDateTime>2015-11-13T13:11:11</CreatedDateTime>
+               <State>AvailableForOffline</State>
+               <StateDateTime>2015-11-13T13:14:51</StateDateTime>
+               <AllocatedUserId>46004105</AllocatedUserId>
+               <AllocatedDateTime>2015-11-13T14:19:32</AllocatedDateTime>
+               <AllocatingUserId>12345678</AllocatingUserId>
+               <AppointmentDateTime>2015-11-13T14:19:31</AppointmentDateTime>
+            </DetailListItem>
+            <DetailListItem>
+               <AssessmentId>PIP43776</AssessmentId>
+               <LocalAssessmentId>43776</LocalAssessmentId>
+               <AlternateLocalAssessmentId>295</AlternateLocalAssessmentId>
+               <NINO>MA000001A</NINO>
+               <AssessmentProviderLotId>1</AssessmentProviderLotId>
+               <AssessmentType>F2F</AssessmentType>
+               <AssessmentEdition>1</AssessmentEdition>
+               <ChangeOfCircsOccurred>false</ChangeOfCircsOccurred>
+               <ConsultationLocation>Home</ConsultationLocation>
+               <CreatedDateTime>2015-11-05T12:53:44</CreatedDateTime>
+               <State>AvailableForOffline</State>
+               <StateDateTime>2015-11-10T14:03:03</StateDateTime>
+               <AllocatedUserId>46004105</AllocatedUserId>
+               <AllocatedDateTime>2015-11-12T09:14:16</AllocatedDateTime>
+               <AllocatingUserId>matt</AllocatingUserId>
+               <AppointmentDateTime>2015-08-14T15:00:00</AppointmentDateTime>
+            </DetailListItem>
+         </MAPSAssessmentMetadataDetailListResponseBody>
+      </MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 17" id="c8b933b1-8581-4478-8ce7-4194013a9b6d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAssessmentMetadataDetailListResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>?</uk:ClientRequestId>
+               <uk:UserId>?</uk:UserId>
+               <uk:Benefit>?</uk:Benefit>
+               <uk:Operation>?</uk:Operation>
+               <uk:IPAddress>?</uk:IPAddress>
+               <uk:HostName>?</uk:HostName>
+               <uk:RequestDateTime>?</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>?</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSAssessmentMetadataDetailListResponseBody>
+            <uk:DetailListItem>
+               <uk:AssessmentId>AA1111111</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>AA1111111</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Submitted</uk:State>
+               <uk:StateDateTime>?</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId>12345678</uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2014 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>
+            </uk:DetailListItem>
+            <uk:DetailListItem>
+               <uk:AssessmentId>AA111111A</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <!--Optional:-->
+               <uk:NINO>AA1111111</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Allocated</uk:State>
+               <uk:StateDateTime>?</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId>12345678</uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>
+            </uk:DetailListItem>
+            <uk:DetailListItem>
+               <uk:AssessmentId>AA111111C</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AssessmentProviderLotId>2</uk:AssessmentProviderLotId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <!--Optional:-->
+               <uk:NINO>AA1111112</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Downloaded</uk:State>
+               <uk:StateDateTime>?</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId>12345678</uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>
+            </uk:DetailListItem>
+            <uk:DetailListItem>
+               <uk:AssessmentId>AA111111A</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AssessmentProviderLotId>3</uk:AssessmentProviderLotId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <!--Optional:-->
+               <uk:NINO>AA1111113</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Allocated</uk:State>
+               <uk:StateDateTime>?</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId>12345678</uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/08/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>
+            </uk:DetailListItem>
+         </uk:MAPSAssessmentMetadataDetailListResponseBody>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:response name="Response 18" id="de587be2-64b2-46ea-9d76-f01a3e34424d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:uk="http://uk.gov.dwp.maps">
+   <soap:Header/>
+   <soap:Body>
+      <uk:MAPSAssessmentMetadataDetailListResponse>
+         <uk:MAPSOpsResponseHeader>
+            <uk:RequestHeader>
+               <uk:ClientRequestId>?</uk:ClientRequestId>
+               <uk:UserId>?</uk:UserId>
+               <uk:Benefit>?</uk:Benefit>
+               <uk:Operation>?</uk:Operation>
+               <uk:IPAddress>?</uk:IPAddress>
+               <uk:HostName>?</uk:HostName>
+               <uk:RequestDateTime>?</uk:RequestDateTime>
+            </uk:RequestHeader>
+            <uk:ResponseStatus>?</uk:ResponseStatus>
+         </uk:MAPSOpsResponseHeader>
+         <!--Optional:-->
+         <uk:MAPSAssessmentMetadataDetailListResponseBody>
+            <uk:DetailListItem>
+               <uk:AssessmentId>AA111111C</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <!--Optional:-->
+               <uk:NINO>AA111111C</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Submitted</uk:State>
+               <uk:StateDateTime>?</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId>12345678</uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/07/2014 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>
+            </uk:DetailListItem>
+            <uk:DetailListItem>
+               <uk:AssessmentId>AA111111F</uk:AssessmentId>
+               <uk:LocalAssessmentId>?</uk:LocalAssessmentId>
+               <uk:AssessmentProviderLotId>1</uk:AssessmentProviderLotId>
+               <uk:AlternateLocalAssessmentId>?</uk:AlternateLocalAssessmentId>
+               <!--Optional:-->
+               <uk:NINO>AA111111F</uk:NINO>
+               <!--Optional:-->
+               <uk:CRN>?</uk:CRN>
+               <uk:AssessmentType>?</uk:AssessmentType>
+               <uk:AssessmentEdition>?</uk:AssessmentEdition>
+               <uk:ChangeOfCircsOccurred>?</uk:ChangeOfCircsOccurred>
+               <!--Optional:-->
+               <uk:ConsultationLocation>?</uk:ConsultationLocation>
+               <uk:CreatedDateTime>?</uk:CreatedDateTime>
+               <!--Optional:-->
+               <uk:ReleaseOutcome>?</uk:ReleaseOutcome>
+               <uk:State>Allocated</uk:State>
+               <uk:StateDateTime>?</uk:StateDateTime>
+               <!--Optional:-->
+               <uk:AllocatedUserId>12345678</uk:AllocatedUserId>
+               <!--Optional:-->
+               <uk:AllocatedDateTime>06/08/2015 15:00</uk:AllocatedDateTime>
+               <!--Optional:-->
+               <uk:AllocatingUserId>12345678</uk:AllocatingUserId>
+               <!--Optional:-->
+               <uk:AppointmentDateTime>?</uk:AppointmentDateTime>
+            </uk:DetailListItem>
+         </uk:MAPSAssessmentMetadataDetailListResponseBody>
+         <!--Optional:-->
+         <uk:MAPSResponseFault>
+            <!--Zero or more repetitions:-->
+            <uk:FaultItem>
+               <uk:FaultCode>?</uk:FaultCode>
+               <uk:FaultString>?</uk:FaultString>
+               <uk:FaultActor>?</uk:FaultActor>
+               <!--Optional:-->
+               <uk:FaultDetail>?</uk:FaultDetail>
+            </uk:FaultItem>
+         </uk:MAPSResponseFault>
+      </uk:MAPSAssessmentMetadataDetailListResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uk.gov.dwp.maps/MAPSAssessmentMetadataDetailListEndpoint/MAPSAssessmentMetadataDetailListResponse"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

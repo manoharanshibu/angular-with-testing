@@ -1,0 +1,416 @@
+2015-11-20 09:57:31,262 WARN  [SoapUI] Missing folder [/usr/local/apache-tomcat-8.0.28/webapps/mapsmock/ext] for external libraries
+2015-11-20 09:57:31,506 INFO  [DefaultSoapUICore] initialized soapui-settings from [/Users/shibumanoharan/soapui-settings.xml]
+2015-11-20 09:57:32,740 INFO  [PluginManager] Adding plugin from [/Users/shibumanoharan/.soapuios/plugins/soapui-swagger-plugin-2.2-dist.jar]
+2015-11-20 09:57:32,740 INFO  [PluginManager] Adding plugin from [/Users/shibumanoharan/.soapuios/plugins/ready-mqtt-plugin-dist.jar]
+2015-11-20 09:57:33,851 ERROR [SoapUI] An error occurred [com.eviware.soapui.plugins.auto.factories.AutoImportMethodFactory], see error log for details
+2015-11-20 09:57:33,854 ERROR [errorlog] java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoImportMethodFactory
+java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoImportMethodFactory
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1333)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at com.eviware.soapui.plugins.LoaderBase.loadAutoFactories(LoaderBase.java:96)
+	at com.eviware.soapui.plugins.LoaderBase.loadFactories(LoaderBase.java:64)
+	at com.eviware.soapui.plugins.PluginLoader.loadPluginFactories(PluginLoader.java:129)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:92)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:42)
+	at com.eviware.soapui.plugins.PluginManager.doInstallPlugin(PluginManager.java:136)
+	at com.eviware.soapui.plugins.PluginManager.access$600(PluginManager.java:38)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.computeSequentially(PluginManager.java:415)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:372)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:377)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:360)
+	at java.util.concurrent.RecursiveTask.exec(RecursiveTask.java:94)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+2015-11-20 09:57:33,864 ERROR [SoapUI] An error occurred [com.eviware.soapui.plugins.auto.factories.AutoDiscoveryMethodFactory], see error log for details
+2015-11-20 09:57:33,864 ERROR [errorlog] java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoDiscoveryMethodFactory
+java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoDiscoveryMethodFactory
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1333)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at com.eviware.soapui.plugins.LoaderBase.loadAutoFactories(LoaderBase.java:96)
+	at com.eviware.soapui.plugins.LoaderBase.loadFactories(LoaderBase.java:64)
+	at com.eviware.soapui.plugins.PluginLoader.loadPluginFactories(PluginLoader.java:129)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:92)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:42)
+	at com.eviware.soapui.plugins.PluginManager.doInstallPlugin(PluginManager.java:136)
+	at com.eviware.soapui.plugins.PluginManager.access$600(PluginManager.java:38)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.computeSequentially(PluginManager.java:415)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:372)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:377)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:360)
+	at java.util.concurrent.RecursiveTask.exec(RecursiveTask.java:94)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+2015-11-20 09:57:33,890 INFO  [PluginManager] Adding plugin from [/Users/shibumanoharan/.soapuios/plugins/ready-uxm-plugin-1.0.1-dist.jar]
+2015-11-20 09:57:33,925 ERROR [SoapUI] An error occurred [com.eviware.soapui.plugins.auto.factories.AutoImportMethodFactory], see error log for details
+2015-11-20 09:57:33,925 ERROR [errorlog] java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoImportMethodFactory
+java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoImportMethodFactory
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1333)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at com.eviware.soapui.plugins.LoaderBase.loadAutoFactories(LoaderBase.java:96)
+	at com.eviware.soapui.plugins.LoaderBase.loadFactories(LoaderBase.java:64)
+	at com.eviware.soapui.plugins.PluginLoader.loadPluginFactories(PluginLoader.java:129)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:92)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:42)
+	at com.eviware.soapui.plugins.PluginManager.doInstallPlugin(PluginManager.java:136)
+	at com.eviware.soapui.plugins.PluginManager.access$600(PluginManager.java:38)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.computeSequentially(PluginManager.java:415)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:372)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:360)
+	at java.util.concurrent.RecursiveTask.exec(RecursiveTask.java:94)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+2015-11-20 09:57:33,927 ERROR [SoapUI] An error occurred [com.eviware.soapui.plugins.auto.factories.AutoDiscoveryMethodFactory], see error log for details
+2015-11-20 09:57:33,927 ERROR [errorlog] java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoDiscoveryMethodFactory
+java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoDiscoveryMethodFactory
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1333)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at com.eviware.soapui.plugins.LoaderBase.loadAutoFactories(LoaderBase.java:96)
+	at com.eviware.soapui.plugins.LoaderBase.loadFactories(LoaderBase.java:64)
+	at com.eviware.soapui.plugins.PluginLoader.loadPluginFactories(PluginLoader.java:129)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:92)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:42)
+	at com.eviware.soapui.plugins.PluginManager.doInstallPlugin(PluginManager.java:136)
+	at com.eviware.soapui.plugins.PluginManager.access$600(PluginManager.java:38)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.computeSequentially(PluginManager.java:415)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:372)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:360)
+	at java.util.concurrent.RecursiveTask.exec(RecursiveTask.java:94)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+2015-11-20 09:57:34,383 ERROR [SoapUI] An error occurred [com.eviware.soapui.plugins.auto.factories.AutoImportMethodFactory], see error log for details
+2015-11-20 09:57:34,383 ERROR [errorlog] java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoImportMethodFactory
+java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoImportMethodFactory
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1333)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at com.eviware.soapui.plugins.LoaderBase.loadAutoFactories(LoaderBase.java:96)
+	at com.eviware.soapui.plugins.LoaderBase.loadFactories(LoaderBase.java:64)
+	at com.eviware.soapui.plugins.PluginLoader.loadPluginFactories(PluginLoader.java:129)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:92)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:42)
+	at com.eviware.soapui.plugins.PluginManager.doInstallPlugin(PluginManager.java:136)
+	at com.eviware.soapui.plugins.PluginManager.access$600(PluginManager.java:38)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.computeSequentially(PluginManager.java:415)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:372)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:377)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:360)
+	at java.util.concurrent.RecursiveTask.exec(RecursiveTask.java:94)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+2015-11-20 09:57:34,383 ERROR [SoapUI] An error occurred [com.eviware.soapui.plugins.auto.factories.AutoDiscoveryMethodFactory], see error log for details
+2015-11-20 09:57:34,383 ERROR [errorlog] java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoDiscoveryMethodFactory
+java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoDiscoveryMethodFactory
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1333)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at com.eviware.soapui.plugins.LoaderBase.loadAutoFactories(LoaderBase.java:96)
+	at com.eviware.soapui.plugins.LoaderBase.loadFactories(LoaderBase.java:64)
+	at com.eviware.soapui.plugins.PluginLoader.loadPluginFactories(PluginLoader.java:129)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:92)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:42)
+	at com.eviware.soapui.plugins.PluginManager.doInstallPlugin(PluginManager.java:136)
+	at com.eviware.soapui.plugins.PluginManager.access$600(PluginManager.java:38)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.computeSequentially(PluginManager.java:415)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:372)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:377)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:360)
+	at java.util.concurrent.RecursiveTask.exec(RecursiveTask.java:94)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+2015-11-20 09:57:34,385 INFO  [PluginManager] Adding plugin from [/Users/shibumanoharan/.soapuios/plugins/readyapi-swaggerhub-plugin-1.0.jar]
+2015-11-20 09:57:34,667 ERROR [SoapUI] An error occurred [com.eviware.soapui.plugins.auto.factories.AutoImportMethodFactory], see error log for details
+2015-11-20 09:57:34,667 ERROR [errorlog] java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoImportMethodFactory
+java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoImportMethodFactory
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1333)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at com.eviware.soapui.plugins.LoaderBase.loadAutoFactories(LoaderBase.java:96)
+	at com.eviware.soapui.plugins.LoaderBase.loadFactories(LoaderBase.java:64)
+	at com.eviware.soapui.plugins.PluginLoader.loadPluginFactories(PluginLoader.java:129)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:92)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:42)
+	at com.eviware.soapui.plugins.PluginManager.doInstallPlugin(PluginManager.java:136)
+	at com.eviware.soapui.plugins.PluginManager.access$600(PluginManager.java:38)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.computeSequentially(PluginManager.java:415)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:372)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:377)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:360)
+	at java.util.concurrent.RecursiveTask.exec(RecursiveTask.java:94)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+2015-11-20 09:57:34,668 ERROR [SoapUI] An error occurred [com.eviware.soapui.plugins.auto.factories.AutoDiscoveryMethodFactory], see error log for details
+2015-11-20 09:57:34,668 ERROR [errorlog] java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoDiscoveryMethodFactory
+java.lang.ClassNotFoundException: com.eviware.soapui.plugins.auto.factories.AutoDiscoveryMethodFactory
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1333)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at com.eviware.soapui.plugins.LoaderBase.loadAutoFactories(LoaderBase.java:96)
+	at com.eviware.soapui.plugins.LoaderBase.loadFactories(LoaderBase.java:64)
+	at com.eviware.soapui.plugins.PluginLoader.loadPluginFactories(PluginLoader.java:129)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:92)
+	at com.eviware.soapui.plugins.PluginLoader.loadPlugin(PluginLoader.java:42)
+	at com.eviware.soapui.plugins.PluginManager.doInstallPlugin(PluginManager.java:136)
+	at com.eviware.soapui.plugins.PluginManager.access$600(PluginManager.java:38)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.computeSequentially(PluginManager.java:415)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:372)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:377)
+	at com.eviware.soapui.plugins.PluginManager$LoadPluginsTask.compute(PluginManager.java:360)
+	at java.util.concurrent.RecursiveTask.exec(RecursiveTask.java:94)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+2015-11-20 09:57:34,671 INFO  [PluginManager] 4 plugins loaded in 1933 ms
+2015-11-20 09:57:34,671 INFO  [DefaultSoapUICore] All plugins loaded
+2015-11-20 09:57:35,027 INFO  [SoapUI] File [/Users/shibumanoharan/Desktop/mapsui/file:/usr/local/apache-tomcat-8.0.28/webapps/mapsmock/WEB-INF/soapui/MapsMock-soapui-project.xml] does not exist, trying URL instead
+2015-11-20 09:57:35,166 INFO  [WsdlProject] Loaded project from [file:/usr/local/apache-tomcat-8.0.28/webapps/mapsmock/WEB-INF/soapui/MapsMock-soapui-project.xml]
+2015-11-20 09:57:35,372 INFO  [SchemaUtils] Added default schema from file:/usr/local/apache-tomcat-8.0.28/webapps/mapsmock/WEB-INF/lib/soapui-5.2.1.jar!/com/eviware/soapui/resources/xsds/xop.xsd with targetNamespace http://www.w3.org/2004/08/xop/include
+2015-11-20 09:57:35,392 INFO  [SchemaUtils] Added default schema from file:/usr/local/apache-tomcat-8.0.28/webapps/mapsmock/WEB-INF/lib/soapui-5.2.1.jar!/com/eviware/soapui/resources/xsds/XMLSchema.xsd with targetNamespace http://www.w3.org/2001/XMLSchema
+2015-11-20 09:57:35,393 INFO  [SchemaUtils] Added default schema from file:/usr/local/apache-tomcat-8.0.28/webapps/mapsmock/WEB-INF/lib/soapui-5.2.1.jar!/com/eviware/soapui/resources/xsds/xml.xsd with targetNamespace http://www.w3.org/XML/1998/namespace
+2015-11-20 09:57:35,395 INFO  [SchemaUtils] Added default schema from file:/usr/local/apache-tomcat-8.0.28/webapps/mapsmock/WEB-INF/lib/soapui-5.2.1.jar!/com/eviware/soapui/resources/xsds/swaref.xsd with targetNamespace http://ws-i.org/profiles/basic/1.1/xsd
+2015-11-20 09:57:35,396 INFO  [SchemaUtils] Added default schema from file:/usr/local/apache-tomcat-8.0.28/webapps/mapsmock/WEB-INF/lib/soapui-5.2.1.jar!/com/eviware/soapui/resources/xsds/xmime200505.xsd with targetNamespace http://www.w3.org/2005/05/xmlmime
+2015-11-20 09:57:35,397 INFO  [SchemaUtils] Added default schema from file:/usr/local/apache-tomcat-8.0.28/webapps/mapsmock/WEB-INF/lib/soapui-5.2.1.jar!/com/eviware/soapui/resources/xsds/xmime200411.xsd with targetNamespace http://www.w3.org/2004/11/xmlmime
+2015-11-20 09:57:35,399 INFO  [SchemaUtils] Added default schema from file:/usr/local/apache-tomcat-8.0.28/webapps/mapsmock/WEB-INF/lib/soapui-5.2.1.jar!/com/eviware/soapui/resources/xsds/soapEnvelope.xsd with targetNamespace http://schemas.xmlsoap.org/soap/envelope/
+2015-11-20 09:57:35,403 INFO  [SchemaUtils] Added default schema from file:/usr/local/apache-tomcat-8.0.28/webapps/mapsmock/WEB-INF/lib/soapui-5.2.1.jar!/com/eviware/soapui/resources/xsds/soapEncoding.xsd with targetNamespace http://schemas.xmlsoap.org/soap/encoding/
+2015-11-20 09:57:35,405 INFO  [SchemaUtils] Added default schema from file:/usr/local/apache-tomcat-8.0.28/webapps/mapsmock/WEB-INF/lib/soapui-5.2.1.jar!/com/eviware/soapui/resources/xsds/soapEnvelope12.xsd with targetNamespace http://www.w3.org/2003/05/soap-envelope
+2015-11-20 09:57:35,410 INFO  [SchemaUtils] Added default schema from file:/usr/local/apache-tomcat-8.0.28/webapps/mapsmock/WEB-INF/lib/soapui-5.2.1.jar!/com/eviware/soapui/resources/xsds/soapEncoding12.xsd with targetNamespace http://www.w3.org/2003/05/soap-encoding
+2015-11-20 09:57:35,411 INFO  [SchemaUtils] Loading schema types from [file:/Users/shibumanoharan/Desktop/services/wsdl/allocate_assessment.wsdl]
+2015-11-20 09:57:35,411 INFO  [SchemaUtils] Getting schema file:/Users/shibumanoharan/Desktop/services/wsdl/allocate_assessment.wsdl
+2015-11-20 09:57:35,430 INFO  [SchemaUtils] Getting schema file:/Users/shibumanoharan/Desktop/services/schema/MAPSAllocationOpsBody.xsd
+2015-11-20 09:57:35,433 INFO  [SchemaUtils] Getting schema file:/Users/shibumanoharan/Desktop/services/schema/MAPSBaseDataTypes.xsd
+2015-11-20 09:57:35,436 INFO  [SchemaUtils] Getting schema file:/Users/shibumanoharan/Desktop/services/schema/MAPSOpsHeader.xsd
+2015-11-20 09:57:35,437 INFO  [SchemaUtils] Getting schema file:/Users/shibumanoharan/Desktop/services/schema/MAPSResponseFault.xsd
+2015-11-20 09:57:35,660 INFO  [WsdlMockDispatcher] Mounted WSDL for interface [MAPSAllocateDeallocateUserBinding] at [/mockMAPSAllocateDeallocateUserBinding?WSDL]
+2015-11-20 09:57:36,060 INFO  [SchemaUtils] Loading schema types from [file:/Users/shibumanoharan/Desktop/services/wsdl/get_assessment_metadata_detaillist.wsdl]
+2015-11-20 09:57:36,060 INFO  [SchemaUtils] Getting schema file:/Users/shibumanoharan/Desktop/services/wsdl/get_assessment_metadata_detaillist.wsdl
+2015-11-20 09:57:36,063 INFO  [SchemaUtils] Getting schema file:/Users/shibumanoharan/Desktop/services/schema/MAPSOpsHeader.xsd
+2015-11-20 09:57:36,064 INFO  [SchemaUtils] Getting schema file:/Users/shibumanoharan/Desktop/services/schema/MAPSBaseDataTypes.xsd
+2015-11-20 09:57:36,065 INFO  [SchemaUtils] Getting schema file:/Users/shibumanoharan/Desktop/services/schema/MAPSAssessmentMetaDataOpsBody.xsd
+2015-11-20 09:57:36,066 INFO  [SchemaUtils] Getting schema file:/Users/shibumanoharan/Desktop/services/schema/MAPSResponseFault.xsd
+2015-11-20 09:57:36,168 INFO  [WsdlMockDispatcher] Mounted WSDL for interface [MAPSAssessmentMetadataDetailListBinding] at [/mockMAPSAssessmentMetadataDetailListBinding?WSDL]
+2015-11-20 09:57:36,923 INFO  [log] 
+2015-11-20 09:57:41,919 INFO  [log] 
+2015-11-20 09:57:42,608 INFO  [log] 
+2015-11-20 09:57:43,283 INFO  [log] 
+2015-11-20 09:57:43,809 INFO  [log] 
+2015-11-20 09:57:44,382 INFO  [log] 
+2015-11-20 09:57:44,863 INFO  [log] 
+2015-11-20 09:57:45,389 INFO  [log] 
+2015-11-20 09:57:45,986 INFO  [log] 
+2015-11-20 09:57:46,543 INFO  [log] 
+2015-11-20 09:57:47,030 INFO  [log] 
+2015-11-20 09:57:51,413 INFO  [log] 
+2015-11-20 09:57:52,793 INFO  [log] 
+2015-11-20 09:57:54,390 INFO  [log] 
+2015-11-20 09:57:55,961 INFO  [log] 
+2015-11-20 09:57:58,002 INFO  [log] 
+2015-11-20 09:58:00,476 INFO  [log] 
+2015-11-20 09:58:02,992 INFO  [log] 
+2015-11-20 09:58:04,921 INFO  [log] 
+2015-11-20 09:58:08,167 INFO  [log] 
+2015-11-20 09:58:09,568 INFO  [log] 
+2015-11-20 09:58:12,819 INFO  [log] 
+2015-11-20 09:58:17,494 INFO  [log] 
+2015-11-20 09:58:17,959 INFO  [log] 
+2015-11-20 09:58:19,600 INFO  [log] 
+2015-11-20 09:58:19,623 INFO  [log] 
+2015-11-20 09:58:19,729 INFO  [log] 
+2015-11-20 09:58:19,751 INFO  [log] 
+2015-11-20 09:58:19,767 INFO  [log] 
+2015-11-20 09:58:19,819 INFO  [log] 
+2015-11-20 09:58:21,071 INFO  [log] 
+2015-11-20 09:58:21,578 INFO  [log] 
+2015-11-20 09:58:25,177 INFO  [log] 
+2015-11-20 09:58:25,181 INFO  [log] 
+2015-11-20 09:58:25,216 INFO  [log] 
+2015-11-20 09:58:25,953 INFO  [log] 
+2015-11-20 09:58:26,382 INFO  [log] 
+2015-11-20 09:58:28,628 INFO  [log] 
+2015-11-20 09:58:30,788 INFO  [log] 
+2015-11-20 09:58:30,789 INFO  [log] 
+2015-11-20 09:58:30,790 INFO  [log] 
+2015-11-20 09:58:30,791 INFO  [log] 
+2015-11-20 09:58:30,793 INFO  [log] 
+2015-11-20 09:58:30,799 INFO  [log] 
+2015-11-20 09:58:30,830 INFO  [log] 
+2015-11-20 09:58:30,831 INFO  [log] 
+2015-11-20 09:58:30,918 INFO  [log] 
+2015-11-20 09:58:32,807 INFO  [log] 
+2015-11-20 09:58:33,298 INFO  [log] 
+2015-11-20 09:58:34,189 INFO  [log] 
+2015-11-20 09:58:34,278 INFO  [log] 
+2015-11-20 09:58:35,646 INFO  [log] 
+2015-11-20 09:58:36,261 INFO  [log] 
+2015-11-20 09:58:39,111 INFO  [log] 
+2015-11-20 09:58:39,686 INFO  [log] 
+2015-11-20 09:58:40,239 INFO  [log] 
+2015-11-20 09:58:42,120 INFO  [log] 
+2015-11-20 09:58:42,672 INFO  [log] 
+2015-11-20 10:04:48,244 INFO  [log] 
+2015-11-20 10:04:53,932 INFO  [log] 
+2015-11-20 10:05:00,410 INFO  [log] 
+2015-11-20 10:06:17,447 INFO  [log] 
+2015-11-20 10:06:17,448 INFO  [log] 
+2015-11-20 10:06:17,451 INFO  [log] 
+2015-11-20 10:06:17,452 INFO  [log] 
+2015-11-20 10:06:17,466 INFO  [log] 
+2015-11-20 10:06:17,467 INFO  [log] 
+2015-11-20 10:06:30,420 INFO  [log] 
+2015-11-20 10:08:34,961 INFO  [log] 
+2015-11-20 10:08:38,815 INFO  [log] 
+2015-11-20 10:08:42,864 INFO  [log] 
+2015-11-20 10:08:47,190 INFO  [log] 
+2015-11-20 10:08:47,190 INFO  [log] 
+2015-11-20 10:08:47,191 INFO  [log] 
+2015-11-20 10:08:47,191 INFO  [log] 
+2015-11-20 10:09:09,245 INFO  [log] 
+2015-11-20 10:09:13,990 INFO  [log] 
+2015-11-20 10:09:14,570 INFO  [log] 
+2015-11-20 10:09:15,250 INFO  [log] 
+2015-11-20 10:09:15,766 INFO  [log] 
+2015-11-20 10:09:16,315 INFO  [log] 
+2015-11-20 10:09:16,792 INFO  [log] 
+2015-11-20 10:09:17,329 INFO  [log] 
+2015-11-20 10:09:17,933 INFO  [log] 
+2015-11-20 10:09:18,495 INFO  [log] 
+2015-11-20 10:09:18,998 INFO  [log] 
+2015-11-20 10:09:23,333 INFO  [log] 
+2015-11-20 10:09:24,736 INFO  [log] 
+2015-11-20 10:09:26,303 INFO  [log] 
+2015-11-20 10:09:27,872 INFO  [log] 
+2015-11-20 10:09:29,859 INFO  [log] 
+2015-11-20 10:09:32,261 INFO  [log] 
+2015-11-20 10:09:34,815 INFO  [log] 
+2015-11-20 10:09:36,790 INFO  [log] 
+2015-11-20 10:09:39,951 INFO  [log] 
+2015-11-20 10:09:41,324 INFO  [log] 
+2015-11-20 10:09:44,464 INFO  [log] 
+2015-11-20 10:09:49,302 INFO  [log] 
+2015-11-20 10:09:49,796 INFO  [log] 
+2015-11-20 10:09:53,321 INFO  [log] 
+2015-11-20 10:09:53,323 INFO  [log] 
+2015-11-20 10:09:53,323 INFO  [log] 
+2015-11-20 10:09:53,324 INFO  [log] 
+2015-11-20 10:09:54,693 INFO  [log] 
+2015-11-20 10:09:55,206 INFO  [log] 
+2015-11-20 10:09:57,323 INFO  [log] 
+2015-11-20 10:09:57,324 INFO  [log] 
+2015-11-20 10:09:58,110 INFO  [log] 
+2015-11-20 10:09:58,599 INFO  [log] 
+2015-11-20 10:10:01,214 INFO  [log] 
+2015-11-20 10:10:02,637 INFO  [log] 
+2015-11-20 10:10:02,637 INFO  [log] 
+2015-11-20 10:10:02,639 INFO  [log] 
+2015-11-20 10:10:02,643 INFO  [log] 
+2015-11-20 10:10:02,688 INFO  [log] 
+2015-11-20 10:10:02,689 INFO  [log] 
+2015-11-20 10:10:04,904 INFO  [log] 
+2015-11-20 10:10:05,404 INFO  [log] 
+2015-11-20 10:10:06,290 INFO  [log] 
+2015-11-20 10:10:06,301 INFO  [log] 
+2015-11-20 10:10:07,824 INFO  [log] 
+2015-11-20 10:10:08,416 INFO  [log] 
+2015-11-20 10:10:11,504 INFO  [log] 
+2015-11-20 10:10:12,055 INFO  [log] 
+2015-11-20 10:10:12,608 INFO  [log] 
+2015-11-20 10:10:14,576 INFO  [log] 
+2015-11-20 10:10:15,082 INFO  [log] 
+2015-11-20 11:21:44,824 ERROR [SoapUI] An error occurred [error: The prefix "uk" for element "uk:MAPSAssessmentMetadataDetailListRequest" is not bound.], see error log for details
+2015-11-20 11:21:44,825 ERROR [errorlog] org.apache.xmlbeans.XmlException: error: The prefix "uk" for element "uk:MAPSAssessmentMetadataDetailListRequest" is not bound.
+org.apache.xmlbeans.XmlException: error: The prefix "uk" for element "uk:MAPSAssessmentMetadataDetailListRequest" is not bound.
+	at org.apache.xmlbeans.impl.store.Locale$SaxLoader.load(Locale.java:3486)
+	at org.apache.xmlbeans.impl.store.Locale.parse(Locale.java:712)
+	at org.apache.xmlbeans.impl.store.Locale.parseToXmlObject(Locale.java:696)
+	at org.apache.xmlbeans.impl.store.Locale.parseToXmlObject(Locale.java:683)
+	at org.apache.xmlbeans.impl.schema.SchemaTypeLoaderBase.parse(SchemaTypeLoaderBase.java:208)
+	at org.apache.xmlbeans.XmlObject$Factory.parse(XmlObject.java:633)
+	at com.eviware.soapui.support.xml.XmlUtils.createXmlObject(XmlUtils.java:183)
+	at com.eviware.soapui.impl.support.AbstractMockRequest.getRequestXmlObject(AbstractMockRequest.java:296)
+	at com.eviware.soapui.impl.wsdl.mock.WsdlMockRequest.setRequestContent(WsdlMockRequest.java:74)
+	at com.eviware.soapui.impl.support.AbstractMockRequest.initPostRequest(AbstractMockRequest.java:105)
+	at com.eviware.soapui.impl.support.AbstractMockRequest.<init>(AbstractMockRequest.java:92)
+	at com.eviware.soapui.impl.wsdl.mock.WsdlMockRequest.<init>(WsdlMockRequest.java:51)
+	at com.eviware.soapui.impl.wsdl.mock.WsdlMockDispatcher.dispatchRequest(WsdlMockDispatcher.java:109)
+	at com.eviware.soapui.impl.wsdl.mock.WsdlMockRunner.dispatchRequest(WsdlMockRunner.java:142)
+	at com.eviware.soapui.mockaswar.MockAsWarServlet$MockServletSoapUICore.dispatchRequest(MockAsWarServlet.java:247)
+	at com.eviware.soapui.mockaswar.MockAsWarServlet.service(MockAsWarServlet.java:182)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:217)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:616)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:518)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1091)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:673)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1500)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1456)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.xml.sax.SAXParseException; systemId: file://; lineNumber: 1; columnNumber: 373; The prefix "uk" for element "uk:MAPSAssessmentMetadataDetailListRequest" is not bound.
+	at org.apache.xerces.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at org.apache.xerces.util.ErrorHandlerWrapper.fatalError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanStartElement(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XMLParser.parse(Unknown Source)
+	at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source)
+	at org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at org.apache.xmlbeans.impl.store.Locale$SaxLoader.load(Locale.java:3454)
+	... 37 more
+2015-11-20 13:06:58,028 INFO  [log] 
+2015-11-20 13:16:20,907 INFO  [log] 
+2015-11-20 13:17:05,960 INFO  [log] 
+2015-11-20 13:17:12,500 INFO  [log] 
+2015-11-20 13:17:59,895 INFO  [log] 
+2015-11-20 13:18:06,070 INFO  [log] 
+2015-11-20 13:33:29,983 INFO  [log] 
+2015-11-20 13:33:58,235 INFO  [log] 
+2015-11-20 14:05:10,339 INFO  [log] 
+2015-11-20 14:05:20,264 INFO  [log] 
+2015-11-20 14:05:23,385 INFO  [log] 
+2015-11-20 14:05:23,387 INFO  [log] 
+2015-11-20 14:05:39,360 INFO  [log] 
+2015-11-20 14:05:39,361 INFO  [log] 
+2015-11-20 14:06:55,783 INFO  [log] 
+2015-11-20 14:07:06,032 INFO  [log] 

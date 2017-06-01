@@ -1,0 +1,9 @@
+{
+    "URL" : "http://localhost:8088/mock",
+    "SEARCH_ASSESSMENTS_PATH" : "MAPSAssessmentMetadataDetailListBinding",
+    "DEALLOCATE_ALLOCATIONS_PATH" : "MAPSAllocateDeallocateUserBinding",
+    "SEARCH_CLAIMANTS_PATH" : "MAPSAssessmentMetadataDetailListBinding",
+    "ALLOCATE_ASSESSMENT_PATH": "MAPSAllocateDeallocateUserBinding",
+    "AUTH": "http://localhost:8081/requestsecuritytoken",
+    "CHANGE_PASSWORD": "http://localhost:8081/changepassword"
+}

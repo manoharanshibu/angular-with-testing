@@ -1,0 +1,43 @@
+{
+  "name": "MAPSUI",
+  "version": "0.0.1",
+  "authors": [
+    "Pat Ash <contactashpat@gmail.com>",
+    "Shibu M <mshibu.sm.it@gmail.com>"
+  ],
+  "description": "MAPSUI Allocation and De-allocation",
+  "main": "index.html",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.dwp.gov.uk",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.4.6",
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5",
+    "lodash": "~3.10.1",
+    "angular-aria": "~1.4.7",
+    "angular-bootstrap": "~0.14.2",
+    "angular-mocks": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "angular-route-segment": "~1.5.0",
+    "ngScrollSpy": "~1.0.9",
+    "string": "~3.3.0",
+    "xml2json": "~1.1.1",
+    "angular-animate": "~1.4.7",
+    "x2js": "~1.1.7"
+  },
+  "resolutions": {
+    "angular": "~1.4.6"
+  }
+}
